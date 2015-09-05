@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- typescript-module.qdoc -->
+  <title>Module typescript | Qbs Manual </title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qbs Manual</a></li>
+<li>Module typescript</li>
+<li id="buildversion">Qt Build Suite 1.4.1</li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<p class="naviNextPrevious headerNavi">
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#general-properties">General Properties</a></li>
+<li class="level2"><a href="#warninglevel">warningLevel</a></li>
+<li class="level2"><a href="#targetversion">targetVersion</a></li>
+<li class="level2"><a href="#moduleloader">moduleLoader</a></li>
+<li class="level2"><a href="#stripcomments">stripComments</a></li>
+<li class="level2"><a href="#generatedeclarations">generateDeclarations</a></li>
+<li class="level2"><a href="#generatesourcemaps">generateSourceMaps</a></li>
+<li class="level2"><a href="#compilerflags">compilerFlags</a></li>
+<li class="level2"><a href="#singlefile">singleFile</a></li>
+<li class="level2"><a href="#version">version</a></li>
+<li class="level2"><a href="#versionmajor">versionMajor</a></li>
+<li class="level2"><a href="#versionminor">versionMinor</a></li>
+<li class="level2"><a href="#versionparts">versionParts</a></li>
+<li class="level2"><a href="#versionpatch">versionPatch</a></li>
+<li class="level2"><a href="#versionbuild">versionBuild</a></li>
+<li class="level2"><a href="#toolchaininstallpath">toolchainInstallPath</a></li>
+<li class="level2"><a href="#compilername">compilerName</a></li>
+<li class="level2"><a href="#compilerpath">compilerPath</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Module typescript</h1>
+<span class="subtitle"></span>
+<!-- $$$typescript-module.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>The <code>typescript</code> module contains properties and rules for building <a href="http://www.typescriptlang.org">TypeScript</a> applications and may be used in combination with the <a href="nodejs-module.html">nodejs</a> module to run TypeScript applications directly from Qbs.</p>
+<a name="general-properties"></a>
+<h2 id="general-properties">General Properties</h2>
+<a name="warninglevel"></a>
+<h3 >warningLevel</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Allowed Values:</b></td><td ><code>&quot;normal&quot;</code>, <code>&quot;pedantic&quot;</code></td></tr>
+<tr valign="top" class="odd"><td ><b>Default:</b></td><td ><code>&quot;normal&quot;</code></td></tr>
+</table></div>
+<p>Severity of warnings to emit. The higher the level, the more warnings will be shown. <code>pedantic</code> causes the TypeScript to emit warnings on expressions and declarations with an implied 'any' type.</p>
+<a name="targetversion"></a>
+<h3 >targetVersion</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Allowed Values:</b></td><td ><code>&quot;ES3&quot;</code>, <code>&quot;ES5&quot;</code></td></tr>
+<tr valign="top" class="odd"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>ECMAScript target version for generated JavaScript code. <code>undefined</code> uses the TypeScript compiler default, which is currently <code>&quot;ES3&quot;</code>.</p>
+<a name="moduleloader"></a>
+<h3 >moduleLoader</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Allowed Values:</b></td><td ><code>&quot;commonjs&quot;</code>, <code>&quot;amd&quot;</code></td></tr>
+<tr valign="top" class="odd"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>If TypeScript modules are being used, the JavaScript module loading mechanism to use in the generated JavaScript code. <code>undefined</code> indicates modules are not being used.</p>
+<a name="stripcomments"></a>
+<h3 >stripComments</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>!qbs.debugInformation</code></td></tr>
+</table></div>
+<p>Whether to remove comments from the generated JavaScript files.</p>
+<a name="generatedeclarations"></a>
+<h3 >generateDeclarations</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>false</code></td></tr>
+</table></div>
+<p>Whether to generate corresponding .d&#x2e;ts files during compilation; these are TypeScript's equivalent of header files.</p>
+<a name="generatesourcemaps"></a>
+<h3 >generateSourceMaps</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>qbs.debugInformation</code></td></tr>
+</table></div>
+<p>Whether to generate corresponding .map files during compilation.</p>
+<a name="compilerflags"></a>
+<h3 >compilerFlags</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>Additional flags for the TypeScript compiler.</p>
+<a name="singlefile"></a>
+<h3 >singleFile</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>false</code></td></tr>
+</table></div>
+<p>Whether to compile all TypeScript source files to a single JavaScript output file. The default is to compile each TypeScript file to a corresponding JavaScript file. This property is incompatible with <code>moduleLoader</code>.</p>
+<a name="version"></a>
+<h3 >version</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>The TypeScript version. Consists of four numbers separated by dots, for instance &quot;1.0&#x2e;0&#x2e;0&quot;.</p>
+<a name="versionmajor"></a>
+<h3 >versionMajor</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>versionParts[0]</code></td></tr>
+</table></div>
+<p>The TypeScript major version.</p>
+<a name="versionminor"></a>
+<h3 >versionMinor</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>versionParts[1]</code></td></tr>
+</table></div>
+<p>The TypeScript minor version.</p>
+<a name="versionparts"></a>
+<h3 >versionParts</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>list</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>empty</code></td></tr>
+</table></div>
+<p>The TypeScript version as a list. For instance, TypeScript version 1.0 would correspond to a value of <code>[1, 0, 0, 0]</code>.</p>
+<a name="versionpatch"></a>
+<h3 >versionPatch</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>versionParts[2]</code></td></tr>
+</table></div>
+<p>The TypeScript patch level.</p>
+<a name="versionbuild"></a>
+<h3 >versionBuild</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>versionParts[3]</code></td></tr>
+</table></div>
+<p>The fourth TypeScript version number component.</p>
+<a name="toolchaininstallpath"></a>
+<h3 >toolchainInstallPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>path</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>TypeScript installation directory. This should not normally need to be changed provided that <code>tsc</code> is already available by searching the PATH environment variable.</p>
+<a name="compilername"></a>
+<h3 >compilerName</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>&quot;tsc&quot;</code></td></tr>
+</table></div>
+<p>Name of the compiler binary. This should not normally need to be changed.</p>
+<a name="compilerpath"></a>
+<h3 >compilerPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>compilerName</code></td></tr>
+</table></div>
+<p>Directory where the compiler binary is located. This should not normally need to be changed.</p>
+</div>
+<!-- @@@typescript-module.html -->
+<p class="naviNextPrevious footerNavi">
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2015 Digia Plc and/or its
+   subsidiaries. Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Digia, Qt and their respective logos are trademarks of Digia Plc     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- jsextensions-general.qdoc -->
+  <title>General Services | Qbs Manual </title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qbs Manual</a></li>
+<li>General Services</li>
+<li id="buildversion">Qt Build Suite 1.4.1</li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<p class="naviNextPrevious headerNavi">
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#available-operations">Available Operations</a></li>
+<li class="level2"><a href="#qbs-getenv">qbs.getEnv</a></li>
+<li class="level2"><a href="#qbs-gethash">qbs.getHash</a></li>
+<li class="level2"><a href="#qbs-rfc1034identifier">qbs.rfc1034Identifier</a></li>
+<li class="level2"><a href="#loadfile">loadFile</a></li>
+<li class="level2"><a href="#loadextension">loadExtension</a></li>
+<li class="level1"><a href="#extensions-to-javascript-built-in-objects">Extensions to JavaScript Built-in Objects</a></li>
+<li class="level2"><a href="#array-contains">Array.contains</a></li>
+<li class="level2"><a href="#array-uniqueconcat">Array.uniqueConcat</a></li>
+<li class="level2"><a href="#string-contains">String.contains</a></li>
+<li class="level2"><a href="#startswith">startsWith</a></li>
+<li class="level2"><a href="#endswith">endsWith</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">General Services</h1>
+<span class="subtitle"></span>
+<!-- $$$jsextensions-general.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>These are operations that do not fit into any of the other categories. They are automatically available in any Qbs project file or JavaScript file.</p>
+<a name="available-operations"></a>
+<h2 id="available-operations">Available Operations</h2>
+<a name="qbs-getenv"></a>
+<h3 >qbs.getEnv</h3>
+<pre class="cpp">qbs<span class="operator">.</span>getEnv(key: string): string</pre>
+<p>Tries to find a variable with the given name in the build environment and returns its value. If no such variable could be found, <code>undefined</code> is returned.</p>
+<a name="qbs-gethash"></a>
+<h3 >qbs.getHash</h3>
+<pre class="cpp">qbs<span class="operator">.</span>getHash(key: string): string</pre>
+<p>Calculates a 16-byte hash of the input and returns it. Rules in modules should use this function to find unique locations for output artifacts in the build directory without duplicating the whole directory structure of the respective input file (to deal with the case of two files with the same name in different subdirectories of the same product).</p>
+<a name="qbs-rfc1034identifier"></a>
+<h3 >qbs.rfc1034Identifier</h3>
+<pre class="cpp">qbs<span class="operator">.</span>rfc1034Identifier(str: string): string</pre>
+<p>Returns an RFC 1034 compliant identifier based on the given string by replacing each character that is not Latin alphanumeric or <code>.</code> with <code>-</code>.</p>
+<a name="loadfile"></a>
+<h3 >loadFile</h3>
+<pre class="cpp">loadFile(filePath: string): any</pre>
+<p>Loads a JavaScript file and returns an object that contains the evaluated context of this file. This function is only available in JavaScript files. For example:</p>
+<pre class="cpp">var MyFunctions <span class="operator">=</span> loadFile(<span class="string">&quot;myfunctions.js&quot;</span>);
+MyFunctions<span class="operator">.</span>doSomething();</pre>
+<a name="loadextension"></a>
+<h3 >loadExtension</h3>
+<pre class="cpp">loadExtension(extensionName: string): any</pre>
+<p>Loads a Qbs extension and returns an object that contains all functions of that extension. This function is only available in JavaScript files. For example:</p>
+<pre class="cpp">var FileInfo <span class="operator">=</span> loadExtension(<span class="string">&quot;qbs.FileInfo&quot;</span>);
+var fileName <span class="operator">=</span> FileInfo<span class="operator">.</span>fileName(filePath);</pre>
+<a name="extensions-to-javascript-built-in-objects"></a>
+<h2 id="extensions-to-javascript-built-in-objects">Extensions to JavaScript Built-in Objects</h2>
+<a name="array-contains"></a>
+<h3 >Array.contains</h3>
+<pre class="cpp">Array<span class="operator">.</span>contains(e: any): boolean</pre>
+<p>Returns <code>true</code> if the array contains the element <code>e</code>. Returns <code>false</code> otherwise.</p>
+<a name="array-uniqueconcat"></a>
+<h3 >Array.uniqueConcat</h3>
+<pre class="cpp">Array<span class="operator">.</span>uniqueConcat(other: any<span class="operator">[</span><span class="operator">]</span>): any<span class="operator">[</span><span class="operator">]</span></pre>
+<p>Returns a copy of this array joined with the array <code>other</code>. Duplicates that would originate from the concatenation are removed. The order of elements is preserved.</p>
+<a name="string-contains"></a>
+<h3 >String.contains</h3>
+<pre class="cpp">String<span class="operator">.</span>contains(s: string): boolean</pre>
+<p>Returns <code>true</code> if the string contains the substring <code>s</code>. Returns <code>false</code> otherwise.</p>
+<a name="startswith"></a>
+<h3 >startsWith</h3>
+<pre class="cpp">String<span class="operator">.</span>startsWith(s: string): boolean</pre>
+<p>Returns <code>true</code> if the string starts with the substring <code>s</code>. Returns <code>false</code> otherwise.</p>
+<a name="endswith"></a>
+<h3 >endsWith</h3>
+<pre class="cpp">String<span class="operator">.</span>endsWith(s: string): boolean</pre>
+<p>Returns <code>true</code> if the string ends with the substring <code>s</code>. Returns <code>false</code> otherwise.</p>
+</div>
+<!-- @@@jsextensions-general.html -->
+<p class="naviNextPrevious footerNavi">
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2015 Digia Plc and/or its
+   subsidiaries. Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Digia, Qt and their respective logos are trademarks of Digia Plc     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

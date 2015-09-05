@@ -1,0 +1,18 @@
+    \section1 Specifying Run Settings for Qt Quick UI Projects
+
+    You can specify run settings for the \gui Desktop target:
+
+    \list
+
+        \o  In the \gui {Qt version} field, select a Qt version that has support
+            for QML.
+
+        \o  In the \gui Arguments field, you can specify command line arguments
+            to be passed to the executable.
+
+        \o  In the \gui {Main QML file}, select the file that \QQV will be
+            started with.
+
+    \endlist
+
+    \image qmldesigner-run-settings.png "Run settings for Qt Quick UI projects"

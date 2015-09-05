@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- qbs-module.qdoc -->
+  <title>Module qbs | Qbs Manual </title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qbs Manual</a></li>
+<li>Module qbs</li>
+<li id="buildversion">Qt Build Suite 1.4.1</li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<p class="naviNextPrevious headerNavi">
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#buildvariant">buildVariant</a></li>
+<li class="level1"><a href="#debuginformation">debugInformation</a></li>
+<li class="level1"><a href="#enabledebugcode">enableDebugCode</a></li>
+<li class="level1"><a href="#optimization">optimization</a></li>
+<li class="level1"><a href="#hostos">hostOS</a></li>
+<li class="level1"><a href="#hostosversion">hostOSVersion</a></li>
+<li class="level1"><a href="#hostosbuildversion">hostOSBuildVersion</a></li>
+<li class="level1"><a href="#versionmajor">versionMajor</a></li>
+<li class="level1"><a href="#versionminor">versionMinor</a></li>
+<li class="level1"><a href="#versionparts">versionParts</a></li>
+<li class="level1"><a href="#versionpatch">versionPatch</a></li>
+<li class="level1"><a href="#targetos">targetOS</a></li>
+<li class="level1"><a href="#architecture">architecture</a></li>
+<li class="level1"><a href="#toolchain">toolchain</a></li>
+<li class="level1"><a href="#sysroot">sysroot</a></li>
+<li class="level1"><a href="#install">install</a></li>
+<li class="level1"><a href="#installsourcebase">installSourceBase</a></li>
+<li class="level1"><a href="#installdir">installDir</a></li>
+<li class="level1"><a href="#installprefix">installPrefix</a></li>
+<li class="level1"><a href="#installroot">installRoot</a></li>
+<li class="level1"><a href="#pathlistseparator">pathListSeparator</a></li>
+<li class="level1"><a href="#version">version</a></li>
+<li class="level1"><a href="#versionmajor">versionMajor</a></li>
+<li class="level1"><a href="#versionminor">versionMinor</a></li>
+<li class="level1"><a href="#versionpatch">versionPatch</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Module qbs</h1>
+<span class="subtitle"></span>
+<!-- $$$qbs-module.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>The <code>qbs</code> module is implicitly loaded in every product. It contains properties of the current build environment, independent of the used programming languages and toolchains.</p>
+<a name="buildvariant"></a>
+<h2 id="buildvariant">buildVariant</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>&quot;debug&quot;</code></td></tr>
+</table></div>
+<p>Contains the name of the build variant for the current build.</p>
+<a name="debuginformation"></a>
+<h2 id="debuginformation">debugInformation</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>true</code> for debug builds, <code>false</code> otherwise</td></tr>
+</table></div>
+<p>Specifies whether to generate debug information.</p>
+<a name="enabledebugcode"></a>
+<h2 id="enabledebugcode">enableDebugCode</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>true</code> for debug builds, <code>false</code> otherwise</td></tr>
+</table></div>
+<p>Specifies whether to compile debug code in the product. This is typically enabled for debug builds and disabled for release builds.</p>
+<a name="optimization"></a>
+<h2 id="optimization">optimization</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Allowed Values:</b></td><td ><code>&quot;none&quot;</code>, <code>&quot;fast&quot;</code>, <code>&quot;small&quot;</code></td></tr>
+<tr valign="top" class="odd"><td ><b>Default:</b></td><td ><code>&quot;none&quot;</code> for debug builds, <code>&quot;fast&quot;</code> for release builds</td></tr>
+</table></div>
+<p>Specifies the general type of optimization that should be performed by all toolchains.</p>
+<a name="hostos"></a>
+<h2 id="hostos">hostOS</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code> (read only)</td></tr>
+</table></div>
+<p>This property is set by Qbs internally and specifies the OS Qbs is running on. The possible values for this property are the values of <code>targetOS</code>, though some may not be supported.</p>
+<a name="hostosversion"></a>
+<h2 id="hostosversion">hostOSVersion</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code> (read only)</td></tr>
+</table></div>
+<p>The host operating system version. Currently only defined for Windows and OS X. Consists of two or three numbers separated by dots, for instance &quot;10.9&quot; or &quot;6.3&#x2e;9600&quot;.</p>
+<a name="hostosbuildversion"></a>
+<h2 id="hostosbuildversion">hostOSBuildVersion</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code> (read only)</td></tr>
+</table></div>
+<p>The host operating system's build version. Currently only defined for Windows and OS X. On Windows, this is the 4 or 5 digit Windows build number and is equivalent to <code>versionPatch</code>. On OS X, this is a standard build number in the Apple versioning scheme, for instance &quot;13C64&quot;.</p>
+<a name="versionmajor"></a>
+<h2 id="versionmajor">versionMajor</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>hostOSVersionParts[0]</code></td></tr>
+</table></div>
+<p>The host operating system major version.</p>
+<a name="versionminor"></a>
+<h2 id="versionminor">versionMinor</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>hostOSVersionParts[1]</code></td></tr>
+</table></div>
+<p>The host operating system minor version.</p>
+<a name="versionparts"></a>
+<h2 id="versionparts">versionParts</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>list</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>empty</code></td></tr>
+</table></div>
+<p>The host operating system version as a list. For instance, Windows 8.1 (version 6.3&#x2e;9600) would correspond to a value of <code>[6, 3, 9600]</code>.</p>
+<a name="versionpatch"></a>
+<h2 id="versionpatch">versionPatch</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>hostOSVersionParts[2]</code></td></tr>
+</table></div>
+<p>The host operating system patch level.</p>
+<a name="targetos"></a>
+<h2 id="targetos">targetOS</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Possible Values:</b></td><td >one or more of: <code>&quot;aix&quot;</code>, <code>&quot;android&quot;</code>, <code>&quot;blackberry&quot;</code>, <code>&quot;bsd&quot;</code>, <code>&quot;bsd4&quot;</code>, <code>&quot;bsdi&quot;</code>, <code>&quot;cygwin&quot;</code>, <code>&quot;darwin&quot;</code>, <code>&quot;dgux&quot;</code>, <code>&quot;dynix&quot;</code>, <code>&quot;freebsd&quot;</code>, <code>&quot;hpux&quot;</code>, <code>&quot;hurd&quot;</code>, <code>&quot;integrity&quot;</code>, <code>&quot;ios&quot;</code>, <code>&quot;ios-simulator&quot;</code>, <code>&quot;irix&quot;</code>, <code>&quot;linux&quot;</code>, <code>&quot;lynx&quot;</code>, <code>&quot;osx&quot;</code>, <code>&quot;msdos&quot;</code>, <code>&quot;nacl&quot;</code>, <code>&quot;netbsd&quot;</code>, <code>&quot;openbsd&quot;</code>, <code>&quot;os2&quot;</code>, <code>&quot;os2emx&quot;</code>, <code>&quot;osf&quot;</code>, <code>&quot;qnx&quot;</code>, <code>&quot;qnx6&quot;</code>, <code>&quot;reliant&quot;</code>, <code>&quot;sco&quot;</code>, <code>&quot;solaris&quot;</code>, <code>&quot;symbian&quot;</code>, <code>&quot;ultrix&quot;</code>, <code>&quot;unix&quot;</code>, <code>&quot;unixware&quot;</code>, <code>&quot;vxworks&quot;</code>, <code>&quot;windows&quot;</code>, <code>&quot;windowsce&quot;</code>, <code>&quot;windowsphone&quot;</code>, <code>&quot;winrt&quot;</code></td></tr>
+</table></div>
+<p>Specifies the OS you want to build the project for. This is typically set in a profile.</p>
+<a name="architecture"></a>
+<h2 id="architecture">architecture</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+</table></div>
+<p>Specifies the target platform's processor architecture. This is typically set in a profile. Currently used values are: <code>&quot;x86&quot;</code>, <code>&quot;x86_64&quot;</code> and <code>&quot;arm&quot;</code>.</p>
+<a name="toolchain"></a>
+<h2 id="toolchain">toolchain</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Allowed Values:</b></td><td ><code>&quot;gcc&quot;</code>, <code>&quot;llvm&quot;</code>, <code>&quot;clang&quot;</code>, <code>&quot;mingw&quot;</code>, <code>&quot;msvc&quot;</code></td></tr>
+</table></div>
+<p>Specifies the attributes of the toolchain that is going to be used for this build.</p>
+<a name="sysroot"></a>
+<h2 id="sysroot">sysroot</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>Specifies the sysroot of the target platform. This property is typically set in a profile for cross-compiling.</p>
+<a name="install"></a>
+<h2 id="install">install</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>false</code></td></tr>
+</table></div>
+<p>Specifies whether to install a certain set of files. This is typically set in a <code>Group</code> item to mark a number of files as installable.</p>
+<p><b>Note: </b>Artifacts for which this property is enabled automatically receive the file tag &quot;installable&quot;. This is useful for writing packaging-related rules.</p><a name="installsourcebase"></a>
+<h2 id="installsourcebase">installSourceBase</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >see below</td></tr>
+</table></div>
+<p>Specifies the base directory of the local files that are going to be installed. The source base directory is omitted from the target directory path specified in <code>installDir</code>. The default value of this property is the directory of the current file to be installed, relative to the product's source directory.</p>
+<a name="installdir"></a>
+<h2 id="installdir">installDir</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>Specifies the installation directory for the files of a product or a <code>Group</code>. The value of this property is a path that is relative to <code>installPrefix</code>.</p>
+<a name="installprefix"></a>
+<h2 id="installprefix">installPrefix</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>empty</code></td></tr>
+</table></div>
+<p>Specifies the global installation prefix. It is implicitly prepended to all values of <code>installDir</code>. The <code>installPrefix</code> itself is relative to the <code>installRoot</code> in the context of installation.</p>
+<a name="installroot"></a>
+<h2 id="installroot">installRoot</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>&lt;build dir&gt;/install-root</code></td></tr>
+</table></div>
+<p>Specifies the global installation root. It is implicitly prepended to all values of <code>installPrefix</code> in the context of installation.</p>
+<p><b>Note: </b>This property is fundamentally different from <code>installDir</code> and <code>installPrefix</code> in that it must not be visible to the code being built. In fact, the install root is often just a temporary location used to package the binaries, which should therefore not assume they will be in that location at run-time.</p><a name="pathlistseparator"></a>
+<h2 id="pathlistseparator">pathListSeparator</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+</table></div>
+<p>Holds the platform-specific separator for path list that is used in environment variables or other contexts. E.g&#x2e; on Windows is this <code>&quot;;&quot;</code>, on Unix derivatives <code>&quot;:&quot;</code>.</p>
+<a name="version"></a>
+<h2 id="version">version</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code> (read only)</td></tr>
+</table></div>
+<p>Version number of Qbs as a string, i.e&#x2e; &quot;1.4&#x2e;1&quot;.</p>
+<a name="versionmajor"></a>
+<h2 id="versionmajor">versionMajor</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code> (read only)</td></tr>
+</table></div>
+<p>Major version number of Qbs.</p>
+<a name="versionminor"></a>
+<h2 id="versionminor">versionMinor</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code> (read only)</td></tr>
+</table></div>
+<p>Minor version number of Qbs.</p>
+<a name="versionpatch"></a>
+<h2 id="versionpatch">versionPatch</h2>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code> (read only)</td></tr>
+</table></div>
+<p>Patch version number of Qbs.</p>
+</div>
+<!-- @@@qbs-module.html -->
+<p class="naviNextPrevious footerNavi">
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2015 Digia Plc and/or its
+   subsidiaries. Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Digia, Qt and their respective logos are trademarks of Digia Plc     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

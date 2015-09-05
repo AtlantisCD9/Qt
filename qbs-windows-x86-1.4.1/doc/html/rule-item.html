@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- rule.qdoc -->
+  <title>Rule Item | Qbs Manual </title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qbs Manual</a></li>
+<li>Rule Item</li>
+<li id="buildversion">Qt Build Suite 1.4.1</li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="qtapplication-item.html" />
+  <link rel="next" href="staticlibrary-item.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="qtapplication-item.html">QtApplication Item</a>
+<a class="nextPage" href="staticlibrary-item.html">StaticLibrary Item</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#rule-properties">Rule Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Rule Item</h1>
+<span class="subtitle"></span>
+<!-- $$$rule-item.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>A <i>multiplex rule</i> creates one <i>transformer</i> that takes all input artifacts with the matching input file tag and creates one or more artifacts (e.g&#x2e; C++ linker). A <i>simplex rule</i> creates one transformer per matching input file (e.g&#x2e; C++ compiler). As a real-world example of a simplex rule, here is a simplified version of Qbs' rule for transforming C++ sources into object files using gcc:</p>
+<pre class="cpp">Rule {
+    id: compiler
+    inputs: <span class="operator">[</span><span class="char">'cpp'</span><span class="operator">]</span>
+    auxiliaryInputs: <span class="operator">[</span><span class="char">'hpp'</span><span class="operator">]</span>
+
+    Artifact {
+        fileTags: <span class="operator">[</span><span class="char">'obj'</span><span class="operator">]</span>
+        filePath: <span class="char">'.obj/'</span> <span class="operator">+</span> qbs<span class="operator">.</span>getHash(input<span class="operator">.</span>baseDir) <span class="operator">+</span> <span class="char">'/'</span> <span class="operator">+</span> input<span class="operator">.</span>fileName <span class="operator">+</span> <span class="char">'.o'</span>
+    }
+
+    prepare: {
+        var args <span class="operator">=</span> <span class="operator">[</span><span class="operator">]</span>;
+        <span class="keyword">if</span> (product<span class="operator">.</span>moduleProperty(<span class="char">'cpp'</span><span class="operator">,</span> <span class="char">'debugInformation'</span>))
+            args<span class="operator">.</span>push(<span class="char">'-g'</span>);
+        var warnings <span class="operator">=</span> product<span class="operator">.</span>moduleProperty(<span class="char">'cpp'</span><span class="operator">,</span> <span class="char">'warningLevel'</span>)
+        <span class="keyword">if</span> (warnings <span class="operator">=</span><span class="operator">=</span><span class="operator">=</span> <span class="char">'none'</span>)
+            args<span class="operator">.</span>push(<span class="char">'-w'</span>);
+        <span class="keyword">if</span> (warnings <span class="operator">=</span><span class="operator">=</span><span class="operator">=</span> <span class="char">'all'</span>) {
+            args<span class="operator">.</span>push(<span class="char">'-Wall'</span>);
+            args<span class="operator">.</span>push(<span class="char">'-Wextra'</span>);
+        }
+        <span class="keyword">if</span> (product<span class="operator">.</span>moduleProperty(<span class="char">'cpp'</span><span class="operator">,</span> <span class="char">'treatWarningsAsErrors'</span>))
+            args<span class="operator">.</span>push(<span class="char">'-Werror'</span>);
+        var includePaths <span class="operator">=</span> product<span class="operator">.</span>moduleProperties(<span class="char">'cpp'</span><span class="operator">,</span> <span class="char">'includePaths'</span>);
+        <span class="keyword">for</span> (i in includePaths)
+            args<span class="operator">.</span>push(<span class="char">'-I'</span> <span class="operator">+</span> includePaths<span class="operator">[</span>i<span class="operator">]</span>);
+        var defines <span class="operator">=</span> product<span class="operator">.</span>moduleProperties(<span class="char">'cpp'</span><span class="operator">,</span> <span class="char">'defines'</span>);
+        <span class="keyword">for</span> (i in defines)
+            args<span class="operator">.</span>push(<span class="char">'-D'</span> <span class="operator">+</span> defines<span class="operator">[</span>i<span class="operator">]</span>);
+        args<span class="operator">.</span>push(<span class="char">'-c'</span>);
+        args<span class="operator">.</span>push(input<span class="operator">.</span>filePath);
+        args<span class="operator">.</span>push(<span class="char">'-o'</span>);
+        args<span class="operator">.</span>push(output<span class="operator">.</span>filePath);
+        var compilerPath <span class="operator">=</span> ModUtils<span class="operator">.</span>moduleProperty(product<span class="operator">,</span> <span class="char">'compilerPath'</span>);
+        var cmd <span class="operator">=</span> <span class="keyword">new</span> Command(compilerPath<span class="operator">,</span> args);
+        cmd<span class="operator">.</span>description <span class="operator">=</span> <span class="char">'compiling '</span> <span class="operator">+</span> input<span class="operator">.</span>fileName;
+        cmd<span class="operator">.</span>highlight <span class="operator">=</span> <span class="char">'compiler'</span>;
+        <span class="keyword">return</span> cmd;
+    }
+}</pre>
+<a name="rule-properties"></a>
+<h2 id="rule-properties">Rule Properties</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >multiplex</td><td >bool</td><td >false</td><td >Determines whether this is a multiplex rule.</td></tr>
+<tr valign="top" class="even"><td >inputs</td><td >string list</td><td >undefined</td><td >File tags the input artifacts must match. All output artifacts will depend on all artifacts in the product with the given input file tags. Also these artifacts are available in the inputs variable of the prepare script.</td></tr>
+<tr valign="top" class="odd"><td >auxiliaryInputs</td><td >string list</td><td >undefined</td><td >A list of file tags. This rule will be dependent on every other rule and transformer that produces artifacts that are compatible with <i>auxiliaryInputs</i>. Unlike <i>inputs</i>, the property <i>auxiliaryInputs</i> has no effect on the content of the <i>inputs</i> variable in the <i>prepare</i> script.</td></tr>
+<tr valign="top" class="even"><td >excludedAuxiliaryInputs</td><td >string list</td><td >undefined</td><td >A list of file tags. Connections to rules that produce these file tags are prevented. This property has no effect on the content of the <i>inputs</i> variable in the <i>prepare</i> script.</td></tr>
+<tr valign="top" class="odd"><td >inputsFromDependencies</td><td >string list</td><td >undefined</td><td >File tags the artifacts of product dependencies must match. For example, the product <i>foo</i> might appear as follows in the current product:<pre class="cpp">        Depends {
+            name: <span class="string">&quot;foo&quot;</span>
+        }</pre>
+<p>All artifacts of <i>foo</i> that match the given file tags will appear in the <i>inputs</i> variable of the prepare script. Also, each output artifact of this rule will be dependent on those artifacts.</p>
+</td></tr>
+<tr valign="top" class="even"><td >outputArtifacts</td><td >array of objects</td><td >undefined</td><td >An array of output artifacts, specified as JavaScript objects. Example:<pre class="cpp">        outputArtifacts: <span class="operator">[</span>{filePath: <span class="string">&quot;myfile.txt&quot;</span><span class="operator">,</span> fileTags: <span class="operator">[</span><span class="string">&quot;foo&quot;</span><span class="operator">,</span> <span class="string">&quot;bar&quot;</span><span class="operator">]</span>}<span class="operator">]</span></pre>
+<p>For a description of the possible properties, see the documentation of the Artifact item. Output artifacts can be specified either by <code>Rule.outputArtifacts</code> or by <code>Artifact</code> items. Use <code>Rule.outputArtifacts</code> if the set of outputs is not fixed but dependent on the input's content. The user may set the property <code>explicitlyDependsOn</code> on artifact objects, which is similar to <code>Rule.explicitlyDependsOn</code>.</p>
+</td></tr>
+<tr valign="top" class="odd"><td >outputFileTags</td><td >string list</td><td >undefined</td><td >If output artifacts are specified by <code>Rule.outputArtifacts</code>, then <code>Rule.outputFileTags</code> must be a list of file tags the rule potentially produces.</td></tr>
+<tr valign="top" class="even"><td >condition</td><td >bool</td><td >true</td><td >If true, the rule is enabled, otherwise it does nothing.</td></tr>
+<tr valign="top" class="odd"><td >explicitlyDependsOn</td><td >string list</td><td >undefined</td><td >Each artifact that matches the file tags in <i>explicitlyDependsOn</i> is added to the dependencies of each output node.</td></tr>
+<tr valign="top" class="even"><td >prepare</td><td >script</td><td >undefined</td><td >Script that prepares the commands to transform the inputs to outputs. The code in this script is treated as a function with the signature <code>function(project, product, inputs, outputs, input, output)</code>. The argument <code>input</code> is <code>undefined</code> if there's more than one input artifact for this rule. Similarly, <code>output</code> is only defined if there's exactly one output artifact.</td></tr>
+</table></div>
+</div>
+<!-- @@@rule-item.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="qtapplication-item.html">QtApplication Item</a>
+<a class="nextPage" href="staticlibrary-item.html">StaticLibrary Item</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2015 Digia Plc and/or its
+   subsidiaries. Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Digia, Qt and their respective logos are trademarks of Digia Plc     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

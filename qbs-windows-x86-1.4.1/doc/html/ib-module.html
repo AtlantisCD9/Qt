@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- ib-module.qdoc -->
+  <title>Module ib | Qbs Manual </title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qbs Manual</a></li>
+<li>Module ib</li>
+<li id="buildversion">Qt Build Suite 1.4.1</li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<p class="naviNextPrevious headerNavi">
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#general-properties">General Properties</a></li>
+<li class="level2"><a href="#warnings">warnings</a></li>
+<li class="level2"><a href="#errors">errors</a></li>
+<li class="level2"><a href="#notices">notices</a></li>
+<li class="level2"><a href="#flags">flags</a></li>
+<li class="level1"><a href="#properties-specific-to-nibs-and-storyboards">Properties Specific to NIBs and Storyboards</a></li>
+<li class="level2"><a href="#ibtoolname">ibtoolName</a></li>
+<li class="level2"><a href="#ibtoolpath">ibtoolPath</a></li>
+<li class="level2"><a href="#flatten">flatten</a></li>
+<li class="level2"><a href="#module">module</a></li>
+<li class="level2"><a href="#autoactivatecustomfonts">autoActivateCustomFonts</a></li>
+<li class="level1"><a href="#properties-specific-to-asset-catalogs">Properties Specific to Asset Catalogs</a></li>
+<li class="level2"><a href="#actoolname">actoolName</a></li>
+<li class="level2"><a href="#actoolpath">actoolPath</a></li>
+<li class="level2"><a href="#appiconname">appIconName</a></li>
+<li class="level2"><a href="#launchimagename">launchImageName</a></li>
+<li class="level2"><a href="#compresspngs">compressPngs</a></li>
+<li class="level1"><a href="#properties-specific-to-icon-sets">Properties Specific to Icon Sets</a></li>
+<li class="level2"><a href="#iconutilname">iconutilName</a></li>
+<li class="level2"><a href="#iconutilpath">iconutilPath</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Module ib</h1>
+<span class="subtitle"></span>
+<!-- $$$ib-module.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>The <code>ib</code> module contains properties and rules for building Interface Builder documents, storyboards, asset catalogs, and icon sets.</p>
+<p>This module is only available on OS X and iOS.</p>
+<a name="general-properties"></a>
+<h2 id="general-properties">General Properties</h2>
+<a name="warnings"></a>
+<h3 >warnings</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>true</code></td></tr>
+</table></div>
+<p>Whether to print warnings when compiling. Does not apply to icon sets.</p>
+<a name="errors"></a>
+<h3 >errors</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>true</code></td></tr>
+</table></div>
+<p>Whether to print warnings when compiling. Does not apply to icon sets.</p>
+<a name="notices"></a>
+<h3 >notices</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>true</code></td></tr>
+</table></div>
+<p>Whether to print warnings when compiling. Does not apply to icon sets.</p>
+<a name="flags"></a>
+<h3 >flags</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>Additional flags to pass to the underlying tool (ibtool, actool, iconutil).</p>
+<a name="properties-specific-to-nibs-and-storyboards"></a>
+<h2 id="properties-specific-to-nibs-and-storyboards">Properties Specific to NIBs and Storyboards</h2>
+<a name="ibtoolname"></a>
+<h3 >ibtoolName</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>&quot;ibtool&quot;</code></td></tr>
+</table></div>
+<p>Name of the ibtool binary used to compile NIBs and storyboards. This should not normally need to be changed.</p>
+<a name="ibtoolpath"></a>
+<h3 >ibtoolPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>ibtoolName</code></td></tr>
+</table></div>
+<p>Directory where the ibtool binary is located. This should not normally need to be changed.</p>
+<a name="flatten"></a>
+<h3 >flatten</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>true</code></td></tr>
+</table></div>
+<p>Compiles XIBs and storyboards into flattened (non-wrapper) files. Set to <code>false</code> to preserve editability of the resulting nib and storyboard bundles in Interface Builder. This property should not normally need to be changed.</p>
+<a name="module"></a>
+<h3 >module</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>Sets the name of the module that the nib or storyboard is a part of. Requires Xcode 6 or newer.</p>
+<a name="autoactivatecustomfonts"></a>
+<h3 >autoActivateCustomFonts</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>true</code></td></tr>
+</table></div>
+<p>Instructs the ibtool compiler to add custom fonts to the application's Info.plist when compiling XIBs and storyboards, which will cause the fonts to activate upon application launch. Requires Xcode 6 or newer.</p>
+<a name="properties-specific-to-asset-catalogs"></a>
+<h2 id="properties-specific-to-asset-catalogs">Properties Specific to Asset Catalogs</h2>
+<a name="actoolname"></a>
+<h3 >actoolName</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>&quot;actool&quot;</code></td></tr>
+</table></div>
+<p>Name of the actool binary used to compile asset catalogs. This should not normally need to be changed.</p>
+<a name="actoolpath"></a>
+<h3 >actoolPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>actoolName</code></td></tr>
+</table></div>
+<p>Directory where the actool binary is located. This should not normally need to be changed.</p>
+<a name="appiconname"></a>
+<h3 >appIconName</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>Name of the resource in the asset catalog that will be used as the application's icon. Used to generate the partial Info.plist which will be merged into the resulting app. If this property is <code>undefined</code>, no application icon will be specified.</p>
+<a name="launchimagename"></a>
+<h3 >launchImageName</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>Name of the resource in the asset catalog that will be used as the application's launch image. Used to generate the partial Info.plist which will be merged into the resulting app. If this property is <code>undefined</code>, no launch image will be specified. Only applies to iOS applications.</p>
+<a name="compresspngs"></a>
+<h3 >compressPngs</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>true</code></td></tr>
+</table></div>
+<p>Whether to compress PNG image files when building asset catalogs.</p>
+<a name="properties-specific-to-icon-sets"></a>
+<h2 id="properties-specific-to-icon-sets">Properties Specific to Icon Sets</h2>
+<a name="iconutilname"></a>
+<h3 >iconutilName</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>&quot;iconutil&quot;</code></td></tr>
+</table></div>
+<p>Name of the iconutil binary used to compile icon sets. This should not normally need to be changed.</p>
+<a name="iconutilpath"></a>
+<h3 >iconutilPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>iconutilName</code></td></tr>
+</table></div>
+<p>Directory where the iconutil binary is located. This should not normally need to be changed.</p>
+</div>
+<!-- @@@ib-module.html -->
+<p class="naviNextPrevious footerNavi">
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2015 Digia Plc and/or its
+   subsidiaries. Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Digia, Qt and their respective logos are trademarks of Digia Plc     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

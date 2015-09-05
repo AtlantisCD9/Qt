@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- probe.qdoc -->
+  <title>Probe Item | Qbs Manual </title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qbs Manual</a></li>
+<li>Probe Item</li>
+<li id="buildversion">Qt Build Suite 1.4.1</li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="module-item.html" />
+  <link rel="next" href="product-item.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="module-item.html">Module Item</a>
+<a class="nextPage" href="product-item.html">Product Item</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#probe-properties">Probe Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Probe Item</h1>
+<span class="subtitle"></span>
+<!-- $$$probe-item.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>A <code>Probe</code> item can appear inside a <a href="product-item.html">Product Item</a> and is run prior to building products in order to locate dependent headers, libraries, and other files outside the project directory whose locations are not known ahead of time. <code>Probes</code> are similar to configure scripts.</p>
+<a name="probe-properties"></a>
+<h2 id="probe-properties">Probe Properties</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >condition</td><td >bool</td><td >true</td><td >Determines whether the probe will actually be run.</td></tr>
+<tr valign="top" class="even"><td >found</td><td >bool</td><td >undefined</td><td >Indicates whether the probe was run successfully. Set by <code>configure</code>.</td></tr>
+<tr valign="top" class="odd"><td >configure</td><td >script</td><td >undefined</td><td >Script that is executed when the probe is run.</td></tr>
+</table></div>
+</div>
+<!-- @@@probe-item.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="module-item.html">Module Item</a>
+<a class="nextPage" href="product-item.html">Product Item</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2015 Digia Plc and/or its
+   subsidiaries. Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Digia, Qt and their respective logos are trademarks of Digia Plc     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

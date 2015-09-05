@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- cpp-module.qdoc -->
+  <title>Module cpp | Qbs Manual </title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qbs Manual</a></li>
+<li>Module cpp</li>
+<li id="buildversion">Qt Build Suite 1.4.1</li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<p class="naviNextPrevious headerNavi">
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#general-properties">General Properties</a></li>
+<li class="level2"><a href="#allowunresolvedsymbols">allowUnresolvedSymbols</a></li>
+<li class="level2"><a href="#architecture">architecture</a></li>
+<li class="level2"><a href="#debuginformation">debugInformation</a></li>
+<li class="level2"><a href="#separatedebuginformation">separateDebugInformation</a></li>
+<li class="level2"><a href="#defines">defines</a></li>
+<li class="level2"><a href="#platformdefines">platformDefines</a></li>
+<li class="level2"><a href="#compilerdefines">compilerDefines</a></li>
+<li class="level2"><a href="#includepaths">includePaths</a></li>
+<li class="level2"><a href="#systemincludepaths">systemIncludePaths</a></li>
+<li class="level2"><a href="#librarypaths">libraryPaths</a></li>
+<li class="level2"><a href="#dynamiclibraries">dynamicLibraries</a></li>
+<li class="level2"><a href="#staticlibraries">staticLibraries</a></li>
+<li class="level2"><a href="#prefixheaders">prefixHeaders</a></li>
+<li class="level2"><a href="#precompiledheader">precompiledHeader</a></li>
+<li class="level2"><a href="#cprecompiledheader">cPrecompiledHeader</a></li>
+<li class="level2"><a href="#cxxprecompiledheader">cxxPrecompiledHeader</a></li>
+<li class="level2"><a href="#objcprecompiledheader">objcPrecompiledHeader</a></li>
+<li class="level2"><a href="#objcxxprecompiledheader">objcxxPrecompiledHeader</a></li>
+<li class="level2"><a href="#precompiledheaderdir">precompiledHeaderDir</a></li>
+<li class="level2"><a href="#optimization">optimization</a></li>
+<li class="level2"><a href="#treatwarningsaserrors">treatWarningsAsErrors</a></li>
+<li class="level2"><a href="#warninglevel">warningLevel</a></li>
+<li class="level2"><a href="#commoncompilerflags">commonCompilerFlags</a></li>
+<li class="level2"><a href="#compilerversionmajor">compilerVersionMajor</a></li>
+<li class="level2"><a href="#compilerversionminor">compilerVersionMinor</a></li>
+<li class="level2"><a href="#compilerversionpatch">compilerVersionPatch</a></li>
+<li class="level2"><a href="#cppflags">cppFlags</a></li>
+<li class="level2"><a href="#cflags">cFlags</a></li>
+<li class="level2"><a href="#cxxflags">cxxFlags</a></li>
+<li class="level2"><a href="#clanguageversion">cLanguageVersion</a></li>
+<li class="level2"><a href="#cxxlanguageversion">cxxLanguageVersion</a></li>
+<li class="level2"><a href="#cxxstandardlibrary">cxxStandardLibrary</a></li>
+<li class="level2"><a href="#objcflags">objcFlags</a></li>
+<li class="level2"><a href="#objcxxflags">objcxxFlags</a></li>
+<li class="level2"><a href="#linkerflags">linkerFlags</a></li>
+<li class="level2"><a href="#linkerscripts">linkerScripts</a></li>
+<li class="level2"><a href="#compilername">compilerName</a></li>
+<li class="level2"><a href="#compilerpath">compilerPath</a></li>
+<li class="level2"><a href="#compilerpathbylanguage">compilerPathByLanguage</a></li>
+<li class="level2"><a href="#compilerwrapper">compilerWrapper</a></li>
+<li class="level2"><a href="#linkername">linkerName</a></li>
+<li class="level2"><a href="#linkerpath">linkerPath</a></li>
+<li class="level2"><a href="#entrypoint">entryPoint</a></li>
+<li class="level2"><a href="#runtimelibrary">runtimeLibrary</a></li>
+<li class="level1"><a href="#properties-specific-to-ios-and-os-x">Properties Specific to iOS and OS X</a></li>
+<li class="level2"><a href="#frameworkpaths">frameworkPaths</a></li>
+<li class="level2"><a href="#systemframeworkpaths">systemFrameworkPaths</a></li>
+<li class="level2"><a href="#frameworks">frameworks</a></li>
+<li class="level2"><a href="#weakframeworks">weakFrameworks</a></li>
+<li class="level2"><a href="#installnameprefix">installNamePrefix</a></li>
+<li class="level2"><a href="#automaticreferencecounting">automaticReferenceCounting</a></li>
+<li class="level2"><a href="#requireappextensionsafeapi">requireAppExtensionSafeApi</a></li>
+<li class="level1"><a href="#properties-specific-to-ios">Properties Specific to iOS</a></li>
+<li class="level2"><a href="#minimumiosversion">minimumIosVersion</a></li>
+<li class="level1"><a href="#properties-specific-to-os-x">Properties Specific to OS X</a></li>
+<li class="level2"><a href="#minimumosxversion">minimumOsxVersion</a></li>
+<li class="level1"><a href="#properties-specific-to-unix-platforms">Properties Specific to Unix Platforms</a></li>
+<li class="level2"><a href="#archivername">archiverName</a></li>
+<li class="level2"><a href="#archiverpath">archiverPath</a></li>
+<li class="level2"><a href="#exportedsymbolscheckmode">exportedSymbolsCheckMode</a></li>
+<li class="level2"><a href="#nmname">nmName</a></li>
+<li class="level2"><a href="#nmpath">nmPath</a></li>
+<li class="level2"><a href="#objcopyname">objcopyName</a></li>
+<li class="level2"><a href="#objcopypath">objcopyPath</a></li>
+<li class="level2"><a href="#stripname">stripName</a></li>
+<li class="level2"><a href="#strippath">stripPath</a></li>
+<li class="level2"><a href="#dsymutilpath">dsymutilPath</a></li>
+<li class="level2"><a href="#dsymutilflags">dsymutilFlags</a></li>
+<li class="level2"><a href="#positionindependentcode">positionIndependentCode</a></li>
+<li class="level2"><a href="#rpaths">rpaths</a></li>
+<li class="level2"><a href="#userpaths">useRPaths</a></li>
+<li class="level2"><a href="#visibility">visibility</a></li>
+<li class="level1"><a href="#properties-specific-to-windows">Properties Specific to Windows</a></li>
+<li class="level2"><a href="#windowsapicharacterset">windowsApiCharacterSet</a></li>
+<li class="level2"><a href="#minimumwindowsversion">minimumWindowsVersion</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Module cpp</h1>
+<span class="subtitle"></span>
+<!-- $$$cpp-module.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>The <code>cpp</code> module contains the properties and rules for toolchains of the C/C++ family. On OS X this includes support for Objective-C/C++.</p>
+<a name="general-properties"></a>
+<h2 id="general-properties">General Properties</h2>
+<a name="allowunresolvedsymbols"></a>
+<h3 >allowUnresolvedSymbols</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>false</code></td></tr>
+</table></div>
+<p>Switch this on if you want the linking step to succeed even if the resulting binary contains unresolved symbols. Normally this makes little sense, but in special cases it is possible that the respective symbols will be available at load time even if they are not present during linking.</p>
+<a name="architecture"></a>
+<h3 >architecture</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>qbs.architecture</code></td></tr>
+</table></div>
+<p>Target architecture. See <code>qbs.architecture</code>.</p>
+<a name="debuginformation"></a>
+<h3 >debugInformation</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>qbs.debugInformation</code></td></tr>
+</table></div>
+<p>Generate debug information. See <code>qbs.debugInformation</code>.</p>
+<a name="separatedebuginformation"></a>
+<h3 >separateDebugInformation</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>false</code> for gcc/clang, <code>true</code> for MSVC</td></tr>
+</table></div>
+<p>Whether to store debug information in an external file or bundle instead of within the binary.</p>
+<a name="defines"></a>
+<h3 >defines</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of preprocessor macros that gets passed to the compiler. To set macro values use the following syntax:</p>
+<pre class="cpp">cpp<span class="operator">.</span>defines: <span class="operator">[</span><span class="string">&quot;USE_COLORS=1&quot;</span><span class="operator">,</span> <span class="char">'COLOR_STR=&quot;blanched almond&quot;'</span><span class="operator">]</span></pre>
+<a name="platformdefines"></a>
+<h3 >platformDefines</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of preprocessor macros that are used for all projects that are built for the current target platform. User project files usually do not set this property.</p>
+<a name="compilerdefines"></a>
+<h3 >compilerDefines</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of preprocessor macros that are used for all projects that are using the current toolchain. User project files usually do not set this property.</p>
+<a name="includepaths"></a>
+<h3 >includePaths</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>pathList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of include paths. Relative paths are considered to be relative to the .qbs product file they are used in.</p>
+<a name="systemincludepaths"></a>
+<h3 >systemIncludePaths</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>pathList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of include paths that are passed as system include paths to the compiler. For header files in those paths warnings will be ignored. Relative paths are considered to be relative to the .qbs product file they are used in.</p>
+<a name="librarypaths"></a>
+<h3 >libraryPaths</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>pathList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of library search paths. Relative paths are considered to be relative to the .qbs product file they are used in.</p>
+<a name="dynamiclibraries"></a>
+<h3 >dynamicLibraries</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of dynamic libraries to be linked. If the library is part of your project, consider using a Depends item instead.</p>
+<a name="staticlibraries"></a>
+<h3 >staticLibraries</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of static libraries to be linked. If the library is part of your project, consider using a Depends item instead.</p>
+<a name="prefixheaders"></a>
+<h3 >prefixHeaders</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>pathList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of files to automatically include at the beginning of each source file in the product.</p>
+<a name="precompiledheader"></a>
+<h3 >precompiledHeader</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>path</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>Name of the header file to be precompiled.</p>
+<p>If you want to use the same precompiled header for all languages (C, C++, Objective-C and Objective-C++), set this property and ensure that the header contains appropriate ifdefs.</p>
+<p>Otherwise, use the <code>cPrecompiledHeader</code>, <code>cppPrecompiledHeader</code>, <code>objcPrecompiledHeader</code> and <code>objcppPrecompiledHeader</code> to specify precompiled headers per-language.</p>
+<a name="cprecompiledheader"></a>
+<h3 >cPrecompiledHeader</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>path</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>precompiledHeader</code></td></tr>
+</table></div>
+<p>Name of the C header file to be precompiled.</p>
+<a name="cxxprecompiledheader"></a>
+<h3 >cxxPrecompiledHeader</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>path</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>precompiledHeader</code></td></tr>
+</table></div>
+<p>Name of the C++ header file to be precompiled.</p>
+<a name="objcprecompiledheader"></a>
+<h3 >objcPrecompiledHeader</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>path</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>precompiledHeader</code></td></tr>
+</table></div>
+<p>Name of the Objective-C header file to be precompiled.</p>
+<a name="objcxxprecompiledheader"></a>
+<h3 >objcxxPrecompiledHeader</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>path</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>precompiledHeader</code></td></tr>
+</table></div>
+<p>Name of the Objective-C++ header file to be precompiled.</p>
+<a name="precompiledheaderdir"></a>
+<h3 >precompiledHeaderDir</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>path</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>product.buildDirectory</code></td></tr>
+</table></div>
+<p>The directory that will contain the precompiled header files. Usually you won't need to set this.</p>
+<a name="optimization"></a>
+<h3 >optimization</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>qbs.optimization</code></td></tr>
+</table></div>
+<p>Optimization level. See <code>qbs.optimization</code>.</p>
+<a name="treatwarningsaserrors"></a>
+<h3 >treatWarningsAsErrors</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>false</code></td></tr>
+</table></div>
+<p>Warnings will be handled as errors and cause the build to fail.</p>
+<a name="warninglevel"></a>
+<h3 >warningLevel</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Allowed Values:</b></td><td ><code>&quot;none&quot;</code>, <code>&quot;all&quot;</code></td></tr>
+<tr valign="top" class="odd"><td ><b>Default:</b></td><td ><code>&quot;all&quot;</code></td></tr>
+</table></div>
+<p>Specifies the warning level for the compiler.</p>
+<a name="commoncompilerflags"></a>
+<h3 >commonCompilerFlags</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>Flags that are added to all compilation commands independently of the language.</p>
+<a name="compilerversionmajor"></a>
+<h3 >compilerVersionMajor</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>The major version of the compiler.</p>
+<a name="compilerversionminor"></a>
+<h3 >compilerVersionMinor</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>The minor version of the compiler.</p>
+<a name="compilerversionpatch"></a>
+<h3 >compilerVersionPatch</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>The patch level component of the compiler version.</p>
+<a name="cppflags"></a>
+<h3 >cppFlags</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>Additional flags for the C preprocessor.</p>
+<a name="cflags"></a>
+<h3 >cFlags</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>Additional flags for the C compiler.</p>
+<a name="cxxflags"></a>
+<h3 >cxxFlags</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>Additional flags for the C++ compiler.</p>
+<a name="clanguageversion"></a>
+<h3 >cLanguageVersion</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+<tr valign="top" class="odd"><td ><b>Allowed Values:</b></td><td ><code>&quot;c89&quot;</code>, <code>&quot;c99&quot;</code>, <code>&quot;c11&quot;</code></td></tr>
+</table></div>
+<p>The version of the C standard with which the code must comply. If this property is set, corresponding compiler and/or linker flags will be added, depending on the toolchain. If the value is left undefined, the compiler default will be used.</p>
+<a name="cxxlanguageversion"></a>
+<h3 >cxxLanguageVersion</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+<tr valign="top" class="odd"><td ><b>Allowed Values:</b></td><td ><code>&quot;c++98&quot;</code>, <code>&quot;c++11&quot;</code>, <code>&quot;c++14&quot;</code></td></tr>
+</table></div>
+<p>The version of the C++ standard with which the code must comply. If this property is set, corresponding compiler and/or linker flags will be added, depending on the toolchain. If the value is left undefined, the compiler default will be used.</p>
+<a name="cxxstandardlibrary"></a>
+<h3 >cxxStandardLibrary</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+<tr valign="top" class="odd"><td ><b>Possible Values:</b></td><td ><code>&quot;libstdc++&quot;</code>, <code>&quot;libc++&quot;</code></td></tr>
+</table></div>
+<p>The C++ standard library to link to. If this property is set, corresponding compiler and/or linker flags will be added, assuming the value is valid for the current toolchain. If the value is left undefined, the compiler default will be used.</p>
+<a name="objcflags"></a>
+<h3 >objcFlags</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>Additional flags for the Objective-C compiler.</p>
+<a name="objcxxflags"></a>
+<h3 >objcxxFlags</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>Additional flags for the Objective-C++ compiler.</p>
+<a name="linkerflags"></a>
+<h3 >linkerFlags</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>Additional flags for the linker.</p>
+<a name="linkerscripts"></a>
+<h3 >linkerScripts</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>pathList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of linker script files.</p>
+<a name="compilername"></a>
+<h3 >compilerName</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >determined by qbs-setup-toolchains</td></tr>
+</table></div>
+<p>Name of the main compiler binary. This is set in the build profile.</p>
+<a name="compilerpath"></a>
+<h3 >compilerPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >determined by qbs-setup-toolchains</td></tr>
+</table></div>
+<p>Full path of the main compiler binary. This is set in the build profile. If the toolchain provides different compilers for different languages, then <code>compilerPathByLanguage</code> is used.</p>
+<a name="compilerpathbylanguage"></a>
+<h3 >compilerPathByLanguage</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code> to <code>string</code> map</td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >determined by qbs-setup-toolchains</td></tr>
+</table></div>
+<p>Maps file tags to full paths of compiler binaries. This is set in the build profile.</p>
+<a name="compilerwrapper"></a>
+<h3 >compilerWrapper</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>Wrapper binary and its arguments for wrapping compiler calls. This is useful for compiler wrappers like ccache and alike.</p>
+<a name="linkername"></a>
+<h3 >linkerName</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >determined by qbs-setup-toolchains</td></tr>
+</table></div>
+<p>Name of the linker binary. This is set in the build profile.</p>
+<a name="linkerpath"></a>
+<h3 >linkerPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >determined by qbs-setup-toolchains</td></tr>
+</table></div>
+<p>Full path of the linker binary. This is set in the build profile.</p>
+<a name="entrypoint"></a>
+<h3 >entryPoint</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>Name of the entry point of an executable or dynamic library. If this property is undefined, the toolchain's default is used.</p>
+<a name="runtimelibrary"></a>
+<h3 >runtimeLibrary</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>&quot;dynamic&quot;</code> for MSVC, <code>undefined</code> for others</td></tr>
+</table></div>
+<p>Type of the used runtime library. Accepted values are <code>&quot;static&quot;</code> and <code>&quot;dynamic&quot;</code>. If this property is set to <code>undefined</code>, then the default runtime library of the toolchain is used.</p>
+<p><b>Note: </b>For MSVC the default value is <code>&quot;dynamic&quot;</code>.</p><p><b>Note: </b>At the moment this property is only functional for MSVC.</p><a name="properties-specific-to-ios-and-os-x"></a>
+<h2 id="properties-specific-to-ios-and-os-x">Properties Specific to iOS and OS X</h2>
+<a name="frameworkpaths"></a>
+<h3 >frameworkPaths</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>pathList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of framework search paths. Relative paths are considered to be relative to the .qbs product file they are used in.</p>
+<a name="systemframeworkpaths"></a>
+<h3 >systemFrameworkPaths</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>pathList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of framework search paths. Relative paths are considered to be relative to the .qbs product file they are used in. Header files in frameworks in those paths will not cause warnings.</p>
+<a name="frameworks"></a>
+<h3 >frameworks</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of frameworks to be linked. If the framework is part of your project, consider using a Depends item instead.</p>
+<a name="weakframeworks"></a>
+<h3 >weakFrameworks</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of frameworks to be weakly linked. If the framework is part of your project, consider using a Depends item instead.</p>
+<a name="installnameprefix"></a>
+<h3 >installNamePrefix</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>The prefix for the internal install name (LC_ID_DYLIB) of a dynamic library on Darwin (OS X and iOS). Typically this should be set to <code>&quot;@rpath&quot;</code> on modern platforms that support it, which includes OS X 10.5 and above, and all versions of iOS.</p>
+<a name="automaticreferencecounting"></a>
+<h3 >automaticReferenceCounting</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>Whether to enable Automatic Reference Counting (ARC) for Objective-C and Objective-C++ source code. If <code>undefined</code>, uses the compiler default (probably <code>false</code>).</p>
+<a name="requireappextensionsafeapi"></a>
+<h3 >requireAppExtensionSafeApi</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>Whether to enforce the use of only app-extension-safe APIs on OS X and iOS. This is necessary for building Application Extensions in OS X Yosemite and iOS 8 and above. If <code>undefined</code>, uses the compiler and linker defaults (probably <code>false</code>).</p>
+<a name="properties-specific-to-ios"></a>
+<h2 id="properties-specific-to-ios">Properties Specific to iOS</h2>
+<a name="minimumiosversion"></a>
+<h3 >minimumIosVersion</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined, but may be set by generated profiles</td></tr>
+</table></div>
+<p>A version number in the format [major].[minor] indicating the earliest version of OS X that the product should run on. Passes -miphoneos-version-min=&lt;version&gt; to the compiler. If undefined, compiler defaults will be used.</p>
+<a name="properties-specific-to-os-x"></a>
+<h2 id="properties-specific-to-os-x">Properties Specific to OS X</h2>
+<a name="minimumosxversion"></a>
+<h3 >minimumOsxVersion</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined, but may be set by generated profiles</td></tr>
+</table></div>
+<p>A version number in the format [major].[minor] indicating the earliest version of OS X that the product should run on. Passes -mmacosx-version-min=&lt;version&gt; to the compiler. If undefined, compiler defaults will be used.</p>
+<a name="properties-specific-to-unix-platforms"></a>
+<h2 id="properties-specific-to-unix-platforms">Properties Specific to Unix Platforms</h2>
+<a name="archivername"></a>
+<h3 >archiverName</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>&quot;ar&quot;</code></td></tr>
+</table></div>
+<p>Name of the archiver binary. This is set in the build profile.</p>
+<a name="archiverpath"></a>
+<h3 >archiverPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >determined by qbs-setup-toolchains</td></tr>
+</table></div>
+<p>Full path of the archiver binary. This is set in the build profile.</p>
+<a name="exportedsymbolscheckmode"></a>
+<h3 >exportedSymbolsCheckMode</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >&quot;ignore-undefined&quot;</td></tr>
+</table></div>
+<p>Controls how Qbs determines whether an updated dynamic library causes relinking of dependents. The default value is <code>&quot;ignore-undefined&quot;</code>, which means that undefined symbols being added or removed do not cause any relinking. If that should happen, for example because dependent products are linked with an option such as <code>&quot;--no-undefined&quot;</code>, then this property can be set to <code>&quot;strict&quot;</code>.</p>
+<a name="nmname"></a>
+<h3 >nmName</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>&quot;nm&quot;</code></td></tr>
+</table></div>
+<p>Name of the nm binary. This is set in the build profile.</p>
+<a name="nmpath"></a>
+<h3 >nmPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >determined by qbs-setup-toolchains</td></tr>
+</table></div>
+<p>Full path of the nm binary. This is set in the build profile.</p>
+<a name="objcopyname"></a>
+<h3 >objcopyName</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>&quot;objcopy&quot;</code></td></tr>
+</table></div>
+<p>Name of the objcopy binary. This is set in the build profile.</p>
+<a name="objcopypath"></a>
+<h3 >objcopyPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >determined by qbs-setup-toolchains</td></tr>
+</table></div>
+<p>Full path of the objcopy binary. This is set in the build profile.</p>
+<a name="stripname"></a>
+<h3 >stripName</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>&quot;strip&quot;</code></td></tr>
+</table></div>
+<p>Name of the strip binary. This is set in the build profile.</p>
+<a name="strippath"></a>
+<h3 >stripPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >determined by qbs-setup-toolchains</td></tr>
+</table></div>
+<p>Full path of the strip binary. This is set in the build profile.</p>
+<a name="dsymutilpath"></a>
+<h3 >dsymutilPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >determined by qbs-setup-toolchains</td></tr>
+</table></div>
+<p>Full path of the dsymutil binary. This is set in the build profile.</p>
+<a name="dsymutilflags"></a>
+<h3 >dsymutilFlags</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>Additional flags for the dsymutil tool.</p>
+<a name="positionindependentcode"></a>
+<h3 >positionIndependentCode</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>Generate position independent code. If this property is <code>undefined</code>, then position independent code is generated for libraries, but not for applications.</p>
+<a name="rpaths"></a>
+<h3 >rpaths</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of rpaths that are passed to the linker.</p>
+<a name="userpaths"></a>
+<h3 >useRPaths</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>true</code></td></tr>
+</table></div>
+<p>Set this property to <code>false</code> to prevent the linker from writing rpaths to the binary.</p>
+<a name="visibility"></a>
+<h3 >visibility</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Allowed Values:</b></td><td ><code>&quot;default&quot;</code>, <code>&quot;hidden&quot;</code>, <code>&quot;hiddenInlines&quot;</code>, <code>&quot;minimal&quot;</code></td></tr>
+<tr valign="top" class="odd"><td ><b>Default:</b></td><td ><code>&quot;default&quot;</code></td></tr>
+</table></div>
+<p>Visibility level for exported symbols. The <code>&quot;minimal&quot;</code> value combines <code>&quot;hidden&quot;</code> and <code>&quot;hiddenInlines&quot;</code>.</p>
+<a name="properties-specific-to-windows"></a>
+<h2 id="properties-specific-to-windows">Properties Specific to Windows</h2>
+<a name="windowsapicharacterset"></a>
+<h3 >windowsApiCharacterSet</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Allowed Values:</b></td><td ><code>&quot;unicode&quot;</code>, <code>&quot;mbcs&quot;</code>, <code>undefined</code></td></tr>
+<tr valign="top" class="odd"><td ><b>Default:</b></td><td ><code>&quot;unicode&quot;</code></td></tr>
+</table></div>
+<p>Specifies the character set used in the Win32 API. &quot;unicode&quot; will define the preprocessor symbols UNICODE and _UNICODE, &quot;mbcs&quot; will define _MBCS, and setting the value to undefined will use the default character set.</p>
+<a name="minimumwindowsversion"></a>
+<h3 >minimumWindowsVersion</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined, but may be set by generated profiles</td></tr>
+</table></div>
+<p>A version number in the format [major].[minor] indicating the earliest version of Windows that the product should run on. Defines WINVER, _WIN32_WINNT, and _WIN32_WINDOWS, and applies a version number to the linker flags /SUBSYSTEM and /OSVERSION for MSVC or -Wl,--major-subsystem-version, -Wl,--minor-subsystem-version, -Wl,--major-os-version and -Wl,--minor-os-version for MinGW. If undefined, compiler defaults will be used.</p>
+</div>
+<!-- @@@cpp-module.html -->
+<p class="naviNextPrevious footerNavi">
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2015 Digia Plc and/or its
+   subsidiaries. Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Digia, Qt and their respective logos are trademarks of Digia Plc     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

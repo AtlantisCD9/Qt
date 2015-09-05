@@ -1,0 +1,271 @@
+/****************************************************************************
+**
+** This file is part of Qt Creator
+**
+** Copyright (c) 2012 Nokia Corporation and/or its subsidiary(-ies).
+**
+** Contact: Nokia Corporation (qt-info@nokia.com)
+**
+**
+** GNU Free Documentation License
+**
+** Alternatively, this file may be used under the terms of the GNU Free
+** Documentation License version 1.3 as published by the Free Software
+** Foundation and appearing in the file included in the packaging of this
+** file.
+**
+** If you have questions regarding the use of this file, please contact
+** Nokia at qt-info@nokia.com.
+**
+****************************************************************************/
+
+// **********************************************************************
+// NOTE: the sections are not ordered by their logical order to avoid
+// reshuffling the file each time the index order changes (i.e., often).
+// Run the fixnavi.pl script to adjust the links to the index order.
+// **********************************************************************
+
+/*!
+    \contentspage index.html
+    \previouspage creator-debugging-helpers.html
+    \page creator-debugging-qml.html
+    \nextpage creator-debugging-example.html
+
+    \title Debugging Qt Quick Projects
+
+    \note You need Qt 4.7.1 or later to debug Qt Quick projects. Debugging
+    projects not created with the Qt Quick wizards is only supported with
+    Qt 4.8, or later.
+
+    To debug Qt Quick applications running on devices, you must install
+    Qt 4.7.4, or later, libraries on devices. To debug applications on Symbian
+    devices, you must install also QML Viewer on them.
+
+    For an example of how to debug Qt Quick Projects, see
+    \l{Debugging a Qt Quick Example Application}.
+
+    \section1 Setting Up QML Debugging
+
+    The process of setting up debugging for Qt Quick projects depends on the
+    \l{Creating Qt Quick Projects}{type of the project}: Qt Quick UI or Qt Quick
+    Application, and the Qt version used.
+
+    To debug Qt Quick UI projects:
+
+    \list 1
+
+        \o  In \gui Projects mode \gui {Run Settings}, select the
+            \gui {Enable QML} check box in the \gui {Debugger Settings} to
+            enable QML debugging.
+
+        \o  For Qt 4.7, compile the QML Inspector debugging helper. For more information,
+            see \l{Debugging Helpers for QML}.
+
+    \endlist
+
+    To debug Qt Quick Applications:
+
+        \list 1
+
+        \o  Debugging is enabled by default for Qt 4.8, or later. For Qt 4.7,
+            select \gui Projects, and then select the
+            \gui {Enable QML debugging} check box in the \gui qmake section
+            in \gui {Build Steps}.
+
+            You might have to compile the library first, by selecting the
+            \gui Compile link.
+
+            \image qml-link-debugging-library.png "Build Steps"
+
+            \note Debugging requires opening a socket at a well-known port,
+            which presents a security risk. Anyone on the Internet could connect
+            to the application that you are debugging and execute any JavaScript
+            functions. Therefore, you must make sure that the port is properly
+            protected by a firewall.
+
+        \o  In the \gui {Run Settings}, \gui {Debugger Settings} section, select
+            the \gui {Enable QML} check box to enable
+            QML debugging.
+
+        \o  Select \gui {Build > Rebuild Project} to clean and rebuild the
+            project.
+
+        \o  To debug applications on devices, check that Qt 4.7.4, or later,
+            libraries are installed on the device and
+            \l{Running on Multiple Targets}{select the device as the target}
+            before you start debugging.
+
+    \endlist
+
+    \section1 Mixed C++/QML Debugging
+
+    To debug both the C++ and QML parts of your application at the same time,
+    select the \gui {Enable C++} and \gui {Enable QML} checkboxes for both
+    languages in the \gui {Debugger Settings} section in the project
+    \gui{Run Settings}.
+
+    \image qtquick-debugging-settings.png
+
+    \section1 Starting QML Debugging
+
+    To start the application, choose \gui {Debug > Start Debugging >
+    Start Debugging} or press \key F5. Once the application starts running, it
+    behaves and performs as usual. You can then perform the following tasks:
+
+    \list
+
+        \o  Debug JavaScript functions
+
+        \o  Execute JavaScript expressions to get information about the state of
+            the application
+
+        \o  Change QML code and immediately see the changes at runtime
+
+        \o  Inspect QML code and change it at runtime without changing the code
+
+        \o  Debug animations
+
+    \endlist
+
+    To debug already running applications:
+
+    \list 1
+
+        \o  Start the application.
+
+        \o  Select \gui {Debug > Start Debugging > Attach to QML Port}.
+
+            When debugging on the desktop, you can use the default values for
+            the connection. When debugging on devices, enter the device IP
+            address in the \gui Host field.
+
+    \endlist
+
+    \section1 Debugging JavaScript Functions
+
+    You can use the \QC \gui Debug mode to inspect the state of your
+    application while debugging. You can interact with the debugger by:
+
+    \list
+
+        \o  \l{Setting Breakpoints}{Setting breakpoints}
+
+        \o  \l{Viewing Call Stack Trace}{Viewing call stack trace}
+
+        \o  \l{Locals and Expressions}{Viewing locals and expressions}
+
+    \endlist
+
+    \section1 Executing JavaScript Expressions
+
+    When the application is interrupted by a breakpoint, you can use the
+    \gui {Console} to execute JavaScript expressions in the current
+    context. To open it, choose \gui {Window > Views > Console}.
+
+    \image qml-script-console.png "Console view"
+
+    You can type JavaScript expressions and use them to get information about
+    the state or your application. You can change property values temporarily,
+    without editing the source, and view the results in the running application.
+
+    You can change the property values permanently in the code editor.
+
+    \section1 Applying QML Changes at Runtime
+
+    If you change property values or add properties in the code editor, the
+    debugger can update the properties in the running application when you save
+    the file. This is enabled by default. To disable it, click the
+    \inlineimage qml-observer-bar-reload.png "Apply Changes on Save button"
+    (\gui {Apply Changes on Save}) button on the toolbar.
+
+    When you change property values in the \gui {Console} or
+    \gui {QML Inspector}, they are immediately updated in the running
+    application, but not in the source code.
+
+    \section1 Inspecting QML at Runtime
+
+    While the application is running, you can use the \gui {QML Inspector} view
+    to explore the object structure, debug animations, and inspect colors.
+    To open the \gui {QML Inspector} view, choose \gui {Window > View >
+    QML Inspector}. The view shows the properties of the currently selected QML
+    element.
+
+    \image qml-observer-view.png "QML Inspector view"
+
+    To keep the application visible while you interact with the inspector, click
+    \inlineimage qml-inspector-app-on-top.png
+    (\gui {Show Application on Top}).
+
+    To display a QML element in the \gui {QML Inspector} view:
+
+    \list
+
+        \o  Select the element in the code editor.
+
+        \o  Click
+            \inlineimage qml-inspector-select-button.png
+            (\gui Select) to activate selection mode and then click an element
+            in the running application.
+
+        \o  Select a child element of an element in the menu in the
+            \gui {QML Inspector} view:
+
+            \image qtquick-example-children.png
+
+        \o  Select an element in the element path in the \gui {QML Inspector}
+            view.
+
+    \endlist
+
+    To change property values temporarily, without editing the source,
+    double-click them and enter the new values. You can view the results in the
+    running application.
+
+    When you select an element, the cursor moves to it in the code editor, where
+    you can change the value permanently.
+
+    \section1 Debugging Animations
+
+    When you debug complex applications, you can use the inspection
+    mode to jump to the position in code where an element is defined. You are
+    switched to the inspection mode, when you click the \gui Select, \gui Zoom,
+    or \gui {Color Picker} button
+    on the toolbar.
+
+    \image qml-observer-buttons.png "QML Inspector toolbar"
+
+    When the \gui Select tool is enabled, you can click elements in the running
+    application to jump to their definitions in the code. The properties of the
+    selected element are displayed in the \gui {QML Inspector} view. The element
+    hierarchy is displayed as a bread crumb path.
+
+    You can also right-click an element in the running application to view the
+    element hierarchy as a context menu.
+
+    \image qml-observer-context-menu.png "QML Inspector"
+
+    To switch to the zoom mode, click the \gui Zoom button. Click in the
+    running application to zoom in. Right-click to open a context menu that
+    contains zoom controls.
+
+    To inspect colors, click the \gui {Color Picker} button. You can also click
+    \inlineimage qml-observer-bar-copy-color.png "Color Picker button"
+    (\gui {Color Picker}) to copy the color definition to the clipboard.
+
+    To switch out of the inspection mode, deselect the \gui Select, \gui Zoom,
+    and \gui {Color Picker} button.
+
+    To move the application running in \QQV to the front, select the
+    \gui {Show Application on Top} button.
+
+    To play and pause animations in the running application, select
+    \inlineimage qml-inspector-play.png
+    (\gui {Play Animations}) and
+    \inlineimage qml-inspector-pause.png
+    (\gui {Pause Animations}) on the toolbar.
+
+    To change the speed at which animations are played, click and hold down
+    \gui {Play/Pause Animations}
+    and select a value.
+
+*/

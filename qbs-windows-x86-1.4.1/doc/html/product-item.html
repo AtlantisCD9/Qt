@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- product.qdoc -->
+  <title>Product Item | Qbs Manual </title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qbs Manual</a></li>
+<li>Product Item</li>
+<li id="buildversion">Qt Build Suite 1.4.1</li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="probe-item.html" />
+  <link rel="next" href="project-item.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="probe-item.html">Probe Item</a>
+<a class="nextPage" href="project-item.html">Project Item</a>
+</p><p/>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Product Item</h1>
+<span class="subtitle"></span>
+<!-- $$$product-item.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>A <i>product</i> typically represents the result of a build process. It specifies a set of input and output files and a way to transform the former into the latter. For example, the following product sets up a very simple C++ application:</p>
+<pre class="cpp">Product {
+    name: <span class="string">&quot;helloworld&quot;</span>
+    type: <span class="string">&quot;application&quot;</span>
+    files: <span class="string">&quot;main.cpp&quot;</span>
+    Depends { name: <span class="string">&quot;cpp&quot;</span> }
+}</pre>
+<p>The <code>type</code> property specifies what will be built (an executable). The <code>files</code> property specifies the input files (one C++ source file), and the <code>Depends</code> item pulls in the logic from the <code>cpp</code> module about how to do the necessary transformations. For some often-used types of products, Qbs pre-defines special derived items that save users some typing. These are:</p>
+<ul>
+<li>Application</li>
+<li>CppApplication</li>
+<li>DynamicLibrary</li>
+<li>StaticLibrary</li>
+</ul>
+<p>Therefore, the above example could also be written like this:</p>
+<pre class="cpp">CppApplication {
+    name: <span class="string">&quot;helloworld&quot;</span>
+    files: <span class="string">&quot;main.cpp&quot;</span>
+}</pre>
+<p>Any property <code>prop</code> attached to this item is available in sub-items as <code>product.prop</code>, as well as in modules that are loaded from this product.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >builtByDefault</td><td >bool</td><td >true</td><td >If false, the product will only be built if this is explicitly requested, either by listing the product name as an argument to <code>--products</code> or by giving the <code>build</code> command the <code>--all-products</code> option.</td></tr>
+<tr valign="top" class="even"><td >condition</td><td >bool</td><td >true</td><td >If false, the product will not be built.</td></tr>
+<tr valign="top" class="odd"><td >name</td><td >string</td><td >empty string</td><td >The name of the product. Used to identify the product in a <code>Depends</code> item, for example. The value of this property must be a simple JavaScript expression that does not depend on module properties or values that are non-local to this product.<pre class="cpp">            CppApplication {
+                name: <span class="string">&quot;hello&quot;</span> <span class="operator">+</span> <span class="string">&quot;world&quot;</span>                     <span class="comment">// valid</span>
+            }
+            CppApplication {
+                name: <span class="string">&quot;app_for_&quot;</span> <span class="operator">+</span> qbs<span class="operator">.</span>targetOS<span class="operator">.</span>join(<span class="string">&quot;_&quot;</span>)   <span class="comment">// invalid</span>
+            }</pre>
+<p>To change the name of your product's target artifact, modify <code>Product.targetName</code> instead.</p>
+</td></tr>
+<tr valign="top" class="even"><td >profiles</td><td >stringList</td><td ><code>[project.profile]</code></td><td >The profiles for which the product should be built. For each profile listed here, one instance of the product will be built according to the properties set in the respective profile. This property is only relevant for projects that require products being built for different architectures. Otherwise it can be left at its default value.</td></tr>
+<tr valign="top" class="odd"><td >type</td><td >stringList</td><td >empty list</td><td >The file tags matching the product's target artifacts.</td></tr>
+<tr valign="top" class="even"><td >targetName</td><td >string</td><td ><code>name</code> with illegal file name characters replaced by underscores</td><td >The base file name of the product's target artifacts.</td></tr>
+<tr valign="top" class="odd"><td >destinationDirectory</td><td >string</td><td >product.buildDirectory</td><td >The directory where the target artifacts will be located. If a relative path is given, the base directory will be <code>project.buildDirectory</code>.</td></tr>
+<tr valign="top" class="even"><td >files</td><td >stringList</td><td >empty list</td><td >A list of source files. Syntactic sugar to save a <code>Group</code> item for simple products.</td></tr>
+<tr valign="top" class="odd"><td >excludeFiles</td><td >stringList</td><td >empty list</td><td >A list of source files not to include. Useful with wildcards. For more information, see <a href="group-item.html">Group Item</a>.</td></tr>
+<tr valign="top" class="even"><td >consoleApplication</td><td >bool</td><td >linker-dependent</td><td >If true, a console application is generated. If false, a GUI application is generated. Only takes effect on Windows. This property also influences the default application type on OS X and iOS. If true, an application bundle is generated. If false, a normal executable is generated.</td></tr>
+<tr valign="top" class="odd"><td >qbsSearchPaths</td><td >stringList</td><td >project.qbsSearchPaths</td><td >See the documentation of the <a href="project-item.html">Project Item</a> property of the same name. The value set here will be merged with the one inherited from the project.</td></tr>
+<tr valign="top" class="even"><td >version</td><td >string</td><td >undefined</td><td >The version number of the product. Used in shared library filenames and generated Info.plist files in OS X and iOS application and framework bundles, for example.</td></tr>
+</table></div>
+<p>The following properties are automatically set by Qbs and cannot be changed by the user:</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >buildDirectory</td><td >path</td><td >The build directory for this product. This is the directory where generated files are placed.</td></tr>
+<tr valign="top" class="even"><td >profile</td><td >string</td><td >The profile for building this particular instance of the product. Derived automatically from the <code>profiles</code> property.</td></tr>
+<tr valign="top" class="odd"><td >sourceDirectory</td><td >path</td><td >The source directory for this product. This is the directory of the file where this product is defined.</td></tr>
+</table></div>
+</div>
+<!-- @@@product-item.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="probe-item.html">Probe Item</a>
+<a class="nextPage" href="project-item.html">Project Item</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2015 Digia Plc and/or its
+   subsidiaries. Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Digia, Qt and their respective logos are trademarks of Digia Plc     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

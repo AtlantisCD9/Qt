@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- android-ndk-module.qdoc -->
+  <title>Module Android.ndk | Qbs Manual </title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qbs Manual</a></li>
+<li>Module Android.ndk</li>
+<li id="buildversion">Qt Build Suite 1.4.1</li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<p class="naviNextPrevious headerNavi">
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#android-ndk-properties">Android.ndk Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Module Android.ndk</h1>
+<span class="subtitle"></span>
+<!-- $$$android-ndk-module.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>The <code>Android.ndk</code> module contains the properties and rules to create native libraries for use in <a href="androidapk-item.html">Android application packages</a>.</p>
+<p>Normally, you will not use this module directly, but instead work with the <a href="dynamiclibrary-item.html">DynamicLibrary</a> and <a href="staticlibrary-item.html">StaticLibrary</a> items that Qbs provides. Here is what the project file for the &quot;hello-jni&quot; example that comes with the NDK could look like:</p>
+<pre class="cpp">import qbs
+
+Project {
+    DynamicLibrary {
+        name: <span class="string">&quot;hello-jni&quot;</span>
+        architectures: <span class="operator">[</span><span class="string">&quot;mips&quot;</span><span class="operator">,</span> <span class="string">&quot;x86&quot;</span><span class="operator">]</span>
+        files: <span class="operator">[</span><span class="string">&quot;jni/hello-jni.c&quot;</span><span class="operator">]</span>
+    }
+
+    AndroidApk {
+        name: <span class="string">&quot;HelloJni&quot;</span>
+        packageName: <span class="string">&quot;com.example.hellojni&quot;</span>
+        Depends { productTypes: <span class="operator">[</span><span class="string">&quot;android.nativelibrary&quot;</span><span class="operator">]</span> }
+    }
+}</pre>
+<a name="android-ndk-properties"></a>
+<h2 id="android-ndk-properties">Android.ndk Properties</h2>
+<p>These properties are set automatically when creating an Android profile via the <code>setup-android</code> tool.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >abi</td><td >string</td><td >undefined</td><td >The ABI name as it appears under &quot;lib/&quot; in the application package.</td></tr>
+<tr valign="top" class="even"><td >appStl</td><td >string</td><td ><code>&quot;system&quot;</code></td><td >The library to use for C++. The possible values are: &quot;system&quot;, &quot;gabi++_static&quot;, &quot;gabi++_shared&quot;, &quot;stlport_static&quot;, &quot;stlport_shared&quot;, &quot;gnustl_static&quot;, &quot;gnustl_shared&quot;, &quot;c++_static&quot;, &quot;c++_shared&quot;.</td></tr>
+<tr valign="top" class="odd"><td >buildProfile</td><td >string</td><td >undefined</td><td >The name of the build profile, e.g&#x2e; &quot;armeabi-v7a-hard&quot;.</td></tr>
+<tr valign="top" class="even"><td >enableExceptions</td><td >bool</td><td ><code>appStl !== &quot;system&quot;</code></td><td >Whether to enable exceptions in C++ code.</td></tr>
+<tr valign="top" class="odd"><td >enableRtti</td><td >bool</td><td ><code>appStl !== &quot;system&quot;</code></td><td >Whether to enable runtime type information in C++ code.</td></tr>
+<tr valign="top" class="even"><td >ndkDir</td><td >path</td><td >undefined</td><td >The NDK base directory.</td></tr>
+<tr valign="top" class="odd"><td >platform</td><td >string</td><td ><code>&quot;android-9&quot;</code></td><td >The versioned platform name.</td></tr>
+</table></div>
+</div>
+<!-- @@@android-ndk-module.html -->
+<p class="naviNextPrevious footerNavi">
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2015 Digia Plc and/or its
+   subsidiaries. Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Digia, Qt and their respective logos are trademarks of Digia Plc     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

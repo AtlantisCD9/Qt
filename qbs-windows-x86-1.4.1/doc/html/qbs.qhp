@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QtHelpProject version="1.0">
+    <namespace>org.qt-project.qbs.141</namespace>
+    <virtualFolder>doc</virtualFolder>
+    <customFilter name="Qt Build Suite 1.4.1">
+        <filterAttribute>1.4.1</filterAttribute>
+        <filterAttribute>qbs</filterAttribute>
+    </customFilter>
+    <filterSection>
+        <filterAttribute>1.4.1</filterAttribute>
+        <filterAttribute>qbs</filterAttribute>
+        <toc>
+            <section ref="index.html" title="Qt Build Suite">
+                <section ref="overview.html" title="Introduction"/>
+                <section ref="setup.html" title="Setup">
+                    <section ref="system-requirements.html" title="System Requirements"/>
+                    <section ref="building.html" title="Building"/>
+                    <section ref="configuring.html" title="Configuring"/>
+                    <section ref="qt-versions.html" title="Managing Qt Versions"/>
+                </section>
+                <section ref="usage.html" title="Usage">
+                    <section ref="language-introduction.html" title="Language Introduction"/>
+                    <section ref="building-applications.html" title="Building Applications"/>
+                    <section ref="running-applications.html" title="Running Applications"/>
+                    <section ref="installing-files.html" title="Installing Files"/>
+                    <section ref="shell.html" title="Using the Shell"/>
+                    <section ref="custom-modules.html" title="Custom Modules and Items"/>
+                </section>
+                <section ref="reference.html" title="Reference"/>
+            </section>
+        </toc>
+        <keywords>
+            <keyword name="AndroidApk Item" id="AndroidApk Item" ref="androidapk-item.html"/>
+            <keyword name="Application Item" id="Application Item" ref="application-item.html"/>
+            <keyword name="ApplicationExtension Item" id="ApplicationExtension Item" ref="applicationextension-item.html"/>
+            <keyword name="Artifact Item" id="Artifact Item" ref="artifact-item.html"/>
+            <keyword name="AutotestRunner Item" id="AutotestRunner Item" ref="autotestrunner-item.html"/>
+            <keyword name="Building" id="Building" ref="building.html"/>
+            <keyword name="Building Applications" id="Building Applications" ref="building-applications.html"/>
+            <keyword name="Command and JavaScriptCommand" id="Command and JavaScriptCommand" ref="commands.html"/>
+            <keyword name="Configuring" id="Configuring" ref="configuring.html"/>
+            <keyword name="CppApplication Item" id="CppApplication Item" ref="cppapplication-item.html"/>
+            <keyword name="Custom Modules and Items" id="Custom Modules and Items" ref="custom-modules.html"/>
+            <keyword name="Depends Item" id="Depends Item" ref="depends-item.html"/>
+            <keyword name="DynamicLibrary Item" id="DynamicLibrary Item" ref="dynamiclibrary-item.html"/>
+            <keyword name="Export Item" id="Export Item" ref="export-item.html"/>
+            <keyword name="File Service" id="File Service" ref="jsextension-file.html"/>
+            <keyword name="FileInfo Service" id="FileInfo Service" ref="jsextension-fileinfo.html"/>
+            <keyword name="FileTagger Item" id="FileTagger Item" ref="filetagger-item.html"/>
+            <keyword name="General Services" id="General Services" ref="jsextensions-general.html"/>
+            <keyword name="Group Item" id="Group Item" ref="group-item.html"/>
+            <keyword name="InstallPackage Item" id="InstallPackage Item" ref="installpackage-item.html"/>
+            <keyword name="Installing Files" id="Installing Files" ref="installing-files.html"/>
+            <keyword name="Introduction" id="Introduction" ref="overview.html"/>
+            <keyword name="JavaClassCollection Item" id="JavaClassCollection Item" ref="javaclasscollection-item.html"/>
+            <keyword name="JavaJarFile Item" id="JavaJarFile Item" ref="javajarfile-item.html"/>
+            <keyword name="Language Introduction" id="Language Introduction" ref="language-introduction.html"/>
+            <keyword name="List of Command-line Tools" id="List of Command-line Tools" ref="list-of-tools.html"/>
+            <keyword name="LoadableModule Item" id="LoadableModule Item" ref="loadablemodule-item.html"/>
+            <keyword name="Managing Qt Versions" id="Managing Qt Versions" ref="qt-versions.html"/>
+            <keyword name="Module Android.ndk" id="Module Android.ndk" ref="android-ndk-module.html"/>
+            <keyword name="Module Android.sdk" id="Module Android.sdk" ref="android-sdk-module.html"/>
+            <keyword name="Module Item" id="Module Item" ref="module-item.html"/>
+            <keyword name="Module archiver" id="Module archiver" ref="archiver-module.html"/>
+            <keyword name="Module bundle" id="Module bundle" ref="bundle-module.html"/>
+            <keyword name="Module cpp" id="Module cpp" ref="cpp-module.html"/>
+            <keyword name="Module ib" id="Module ib" ref="ib-module.html"/>
+            <keyword name="Module java" id="Module java" ref="java-module.html"/>
+            <keyword name="Module nodejs" id="Module nodejs" ref="nodejs-module.html"/>
+            <keyword name="Module nsis" id="Module nsis" ref="nsis-module.html"/>
+            <keyword name="Module qbs" id="Module qbs" ref="qbs-module.html"/>
+            <keyword name="Module typescript" id="Module typescript" ref="typescript-module.html"/>
+            <keyword name="Module wix" id="Module wix" ref="wix-module.html"/>
+            <keyword name="Probe Item" id="Probe Item" ref="probe-item.html"/>
+            <keyword name="Process Service" id="Process Service" ref="jsextension-process.html"/>
+            <keyword name="Product Item" id="Product Item" ref="product-item.html"/>
+            <keyword name="Project Item" id="Project Item" ref="project-item.html"/>
+            <keyword name="Properties Item" id="Properties Item" ref="properties-item.html"/>
+            <keyword name="PropertyList Service" id="PropertyList Service" ref="jsextension-propertylist.html"/>
+            <keyword name="PropertyOptions Item" id="PropertyOptions Item" ref="propertyoptions-item.html"/>
+            <keyword name="Qbs Manual" id="Qbs Manual" ref="index.html"/>
+            <keyword name="Qt Modules" id="Qt Modules" ref="qt-modules.html"/>
+            <keyword name="QtApplication Item" id="QtApplication Item" ref="qtapplication-item.html"/>
+            <keyword name="QtGuiApplication Item" id="QtGuiApplication Item" ref="qtguiapplication-item.html"/>
+            <keyword name="Reference" id="Reference" ref="reference.html"/>
+            <keyword name="Rule Item" id="Rule Item" ref="rule-item.html"/>
+            <keyword name="Running Applications" id="Running Applications" ref="running-applications.html"/>
+            <keyword name="Scanner Item" id="Scanner Item" ref="scanner-item.html"/>
+            <keyword name="Setup" id="Setup" ref="setup.html"/>
+            <keyword name="StaticLibrary Item" id="StaticLibrary Item" ref="staticlibrary-item.html"/>
+            <keyword name="SubProject Item" id="SubProject Item" ref="subproject-item.html"/>
+            <keyword name="System Requirements" id="System Requirements" ref="system-requirements.html"/>
+            <keyword name="TextFile Service" id="TextFile Service" ref="jsextension-textfile.html"/>
+            <keyword name="Transformer Item" id="Transformer Item" ref="transformer-item.html"/>
+            <keyword name="Usage" id="Usage" ref="usage.html"/>
+            <keyword name="Using the Shell" id="Using the Shell" ref="shell.html"/>
+            <keyword name="XPCService Item" id="XPCService Item" ref="xpcservice-item.html"/>
+            <keyword name="list-of-builtin-services" id="list-of-builtin-services" ref="list-of-builtin-services.html"/>
+            <keyword name="list-of-items" id="list-of-items" ref="list-of-items.html"/>
+            <keyword name="list-of-modules" id="list-of-modules" ref="list-of-modules.html"/>
+        </keywords>
+        <files>
+            <file>autotestrunner-item.html</file>
+            <file>qt-versions.html</file>
+            <file>javaclasscollection-item.html</file>
+            <file>images/bullet_sq.png</file>
+            <file>qtapplication-item.html</file>
+            <file>images/btn_next.png</file>
+            <file>staticlibrary-item.html</file>
+            <file>jsextensions-general.html</file>
+            <file>java-module.html</file>
+            <file>installing-files.html</file>
+            <file>images/home.png</file>
+            <file>xpcservice-item.html</file>
+            <file>group-item.html</file>
+            <file>building.html</file>
+            <file>images/btn_prev.png</file>
+            <file>project-item.html</file>
+            <file>cpp-module.html</file>
+            <file>building-applications.html</file>
+            <file>scanner-item.html</file>
+            <file>qt-modules.html</file>
+            <file>images/arrow_bc.png</file>
+            <file>index.html</file>
+            <file>javajarfile-item.html</file>
+            <file>images/ico_note.png</file>
+            <file>export-item.html</file>
+            <file>images/logo.png</file>
+            <file>android-ndk-module.html</file>
+            <file>nodejs-module.html</file>
+            <file>custom-modules.html</file>
+            <file>android-sdk-module.html</file>
+            <file>commands.html</file>
+            <file>reference.html</file>
+            <file>loadablemodule-item.html</file>
+            <file>usage.html</file>
+            <file>jsextension-file.html</file>
+            <file>list-of-modules.html</file>
+            <file>transformer-item.html</file>
+            <file>dynamiclibrary-item.html</file>
+            <file>module-item.html</file>
+            <file>typescript-module.html</file>
+            <file>style/offline.css</file>
+            <file>application-item.html</file>
+            <file>applicationextension-item.html</file>
+            <file>depends-item.html</file>
+            <file>jsextension-propertylist.html</file>
+            <file>qbs-module.html</file>
+            <file>list-of-builtin-services.html</file>
+            <file>archiver-module.html</file>
+            <file>overview.html</file>
+            <file>filetagger-item.html</file>
+            <file>rule-item.html</file>
+            <file>properties-item.html</file>
+            <file>product-item.html</file>
+            <file>jsextension-process.html</file>
+            <file>installpackage-item.html</file>
+            <file>jsextension-fileinfo.html</file>
+            <file>probe-item.html</file>
+            <file>wix-module.html</file>
+            <file>list-of-tools.html</file>
+            <file>propertyoptions-item.html</file>
+            <file>setup.html</file>
+            <file>ib-module.html</file>
+            <file>images/ico_note_attention.png</file>
+            <file>running-applications.html</file>
+            <file>cppapplication-item.html</file>
+            <file>language-introduction.html</file>
+            <file>bundle-module.html</file>
+            <file>qtguiapplication-item.html</file>
+            <file>jsextension-textfile.html</file>
+            <file>shell.html</file>
+            <file>nsis-module.html</file>
+            <file>images/ico_out.png</file>
+            <file>androidapk-item.html</file>
+            <file>subproject-item.html</file>
+            <file>images/bullet_dn.png</file>
+            <file>system-requirements.html</file>
+            <file>list-of-items.html</file>
+            <file>images/bgrContent.png</file>
+            <file>artifact-item.html</file>
+            <file>configuring.html</file>
+        </files>
+    </filterSection>
+</QtHelpProject>

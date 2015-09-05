@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- module.qdoc -->
+  <title>Module Item | Qbs Manual </title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qbs Manual</a></li>
+<li>Module Item</li>
+<li id="buildversion">Qt Build Suite 1.4.1</li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="loadablemodule-item.html" />
+  <link rel="next" href="probe-item.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="loadablemodule-item.html">LoadableModule Item</a>
+<a class="nextPage" href="probe-item.html">Probe Item</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#module-properties">Module Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Module Item</h1>
+<span class="subtitle"></span>
+<!-- $$$module-item.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>A <code>Module</code> item is a collection of properties and language items that are used for building a product if the product has a <a href="depends-item.html">dependency</a> on the module. The following (somewhat artificial) module pre-processes text files by removing certain characters from them:</p>
+<pre class="cpp">import qbs
+import qbs<span class="operator">.</span>FileInfo
+import qbs<span class="operator">.</span>TextFile
+
+Module {
+    property stringList unwantedCharacters: <span class="operator">[</span><span class="operator">]</span>
+    FileTagger {
+        patterns: <span class="operator">[</span><span class="string">&quot;*.raw&quot;</span><span class="operator">]</span>
+        fileTags: <span class="operator">[</span><span class="string">&quot;raw-txt&quot;</span><span class="operator">]</span>
+    }
+    Rule {
+        inputs: <span class="operator">[</span><span class="string">&quot;raw-txt&quot;</span><span class="operator">]</span>
+        Artifact {
+            filePath: FileInfo<span class="operator">.</span>relativePath(input<span class="operator">.</span>filePath<span class="operator">,</span> product<span class="operator">.</span>sourceDirectory) <span class="operator">+</span>
+                       <span class="string">&quot;/&quot;</span> <span class="operator">+</span> input<span class="operator">.</span>fileName <span class="operator">+</span> <span class="string">&quot;.processed&quot;</span>
+            fileTags: <span class="operator">[</span><span class="string">&quot;processed-txt&quot;</span><span class="operator">]</span>
+        }
+        prepare: {
+            var cmd <span class="operator">=</span> <span class="keyword">new</span> JavaScriptCommand();
+            cmd<span class="operator">.</span>description <span class="operator">=</span> <span class="string">&quot;Processing &quot;</span> <span class="operator">+</span> input<span class="operator">.</span>fileName;
+            cmd<span class="operator">.</span>sourceCode <span class="operator">=</span> function() {
+                var inFile <span class="operator">=</span> <span class="keyword">new</span> TextFile(input<span class="operator">.</span>filePath<span class="operator">,</span> TextFile<span class="operator">.</span>ReadOnly);
+                var content <span class="operator">=</span> inFile<span class="operator">.</span>readAll();
+                inFile<span class="operator">.</span>close();
+                var unwantedChars <span class="operator">=</span> product<span class="operator">.</span>moduleProperty(<span class="string">&quot;txt_processor&quot;</span><span class="operator">,</span>
+                                                           <span class="string">&quot;unwantedCharacters&quot;</span>);
+                <span class="keyword">for</span> (var c in unwantedChars)
+                    content <span class="operator">=</span> content<span class="operator">.</span>replace(unwantedChars<span class="operator">[</span>c<span class="operator">]</span><span class="operator">,</span> <span class="string">&quot;&quot;</span>);
+                var outFile <span class="operator">=</span> <span class="keyword">new</span> TextFile(output<span class="operator">.</span>filePath<span class="operator">,</span> TextFile<span class="operator">.</span>WriteOnly);
+                outFile<span class="operator">.</span>write(content);
+                outFile<span class="operator">.</span>close();
+            };
+            <span class="keyword">return</span> cmd;
+        }
+    }
+}</pre>
+<p>And this is how a product would use the module:</p>
+<pre class="cpp">Product {
+    type: <span class="string">&quot;processed-txt&quot;</span>
+    Depends { name: <span class="string">&quot;txt_processor&quot;</span> }
+    txt_processor<span class="operator">.</span>unwantedCharacters: <span class="operator">[</span><span class="string">&quot;\r&quot;</span><span class="operator">]</span>
+    files: <span class="operator">[</span>
+        <span class="string">&quot;file1.raw&quot;</span><span class="operator">,</span>
+        <span class="string">&quot;file2.raw&quot;</span>
+    <span class="operator">]</span>
+}</pre>
+<p>Of course, normally the pre-processed files would not be the target artifacts of the product, but rather serve as inputs to a different rule that will often come from a different module.</p>
+<p>How you make your own modules available to Qbs is explained <a href="custom-modules.html">here</a>.</p>
+<a name="module-properties"></a>
+<h2 id="module-properties">Module Properties</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >additionalProductFileTags</td><td >string list</td><td >empty list</td><td >The elements of this list will be added to the <code>type</code> property of a product that has a dependency on the module.</td></tr>
+<tr valign="top" class="even"><td >condition</td><td >bool</td><td ><code>true</code></td><td >Controls whether the module is enabled. If this property is <code>false</code>, the surrounding <code>Module</code> item will not be considered in the module look-up.</td></tr>
+<tr valign="top" class="odd"><td >present</td><td >bool</td><td ><code>true</code></td><td >This property is read-only. Its value is <code>false</code> if and only if the respective <code>Depends</code> item had its <code>required</code> property set to <code>false</code> and the module was not found.</td></tr>
+<tr valign="top" class="even"><td >setupBuildEnvironment</td><td >script</td><td ><code>undefined</code></td><td >Script for setting up the environment in which the project is built. Use the <code>putEnv</code>, <code>getEnv</code>, and <code>unsetEnv</code> functions to alter the environment. The return value of this script is ignored.</td></tr>
+<tr valign="top" class="odd"><td >setupRunEnvironment</td><td >script</td><td ><code>setupBuildEnvironment</code></td><td >Script for setting up the environment in which the project is run.</td></tr>
+<tr valign="top" class="even"><td >validate</td><td >script</td><td ><code>undefined</code></td><td >Script that is run after the module is loaded. It can be used to check property values and throw errors in unexpected cases. The return value is ignored.</td></tr>
+</table></div>
+</div>
+<!-- @@@module-item.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="loadablemodule-item.html">LoadableModule Item</a>
+<a class="nextPage" href="probe-item.html">Probe Item</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2015 Digia Plc and/or its
+   subsidiaries. Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Digia, Qt and their respective logos are trademarks of Digia Plc     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

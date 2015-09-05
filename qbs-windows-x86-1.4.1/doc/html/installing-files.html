@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- qbs.qdoc -->
+  <title>Installing Files | Qbs Manual </title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qbs Manual</a></li>
+<li>Installing Files</li>
+<li id="buildversion">Qt Build Suite 1.4.1</li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="running-applications.html" />
+  <link rel="next" href="shell.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="running-applications.html">Running Applications</a>
+<a class="nextPage" href="shell.html">Using the Shell</a>
+</p><p/>
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Installing Files</h1>
+<span class="subtitle"></span>
+<!-- $$$installing-files.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>To install your project, specify the necessary information in the project file:</p>
+<pre class="cpp">Application {
+    Group {
+        name: <span class="string">&quot;Runtime resources&quot;</span>
+        files: <span class="string">&quot;*.qml&quot;</span>
+        qbs<span class="operator">.</span>install: <span class="keyword">true</span>
+        qbs<span class="operator">.</span>installDir: <span class="string">&quot;share/myproject&quot;</span>
+    }
+    Group {
+        name: <span class="string">&quot;The App itself&quot;</span>
+        fileTagsFilter: <span class="string">&quot;application&quot;</span>
+        qbs<span class="operator">.</span>install: <span class="keyword">true</span>
+        qbs<span class="operator">.</span>installDir: <span class="string">&quot;bin&quot;</span>
+    }
+}</pre>
+<p>In this example, we want to install a couple of QML files and an executable. The actual installation is then done like this (using the default profile):</p>
+<pre class="cpp">qbs <span class="operator">-</span><span class="operator">-</span>clean<span class="operator">-</span>install<span class="operator">-</span>root qbs<span class="operator">.</span>installRoot:<span class="operator">/</span>tmp<span class="operator">/</span>myProjectRoot</pre>
+<p>Here, we want the <a href="qbs-module.html#installdir">installDir</a> properties from the project file to be interpreted relative to the directory <code>/tmp/myProjectRoot</code>, and we want that directory to be removed first. If the <code>qbs.installRoot</code> property is not given, a default is used, namely <code>&lt;build root&gt;/install-root</code>.</p>
+</div>
+<!-- @@@installing-files.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="running-applications.html">Running Applications</a>
+<a class="nextPage" href="shell.html">Using the Shell</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2015 Digia Plc and/or its
+   subsidiaries. Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Digia, Qt and their respective logos are trademarks of Digia Plc     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

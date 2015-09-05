@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- wix-module.qdoc -->
+  <title>Module wix | Qbs Manual </title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qbs Manual</a></li>
+<li>Module wix</li>
+<li id="buildversion">Qt Build Suite 1.4.1</li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<p class="naviNextPrevious headerNavi">
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#general-properties">General Properties</a></li>
+<li class="level2"><a href="#debuginformation">debugInformation</a></li>
+<li class="level2"><a href="#defines">defines</a></li>
+<li class="level2"><a href="#enableqbsdefines">enableQbsDefines</a></li>
+<li class="level2"><a href="#visualstudiocompatibility">visualStudioCompatibility</a></li>
+<li class="level2"><a href="#includepaths">includePaths</a></li>
+<li class="level2"><a href="#treatwarningsaserrors">treatWarningsAsErrors</a></li>
+<li class="level2"><a href="#warninglevel">warningLevel</a></li>
+<li class="level2"><a href="#verboseoutput">verboseOutput</a></li>
+<li class="level2"><a href="#compilerflags">compilerFlags</a></li>
+<li class="level2"><a href="#linkerflags">linkerFlags</a></li>
+<li class="level2"><a href="#cultures">cultures</a></li>
+<li class="level2"><a href="#extensions">extensions</a></li>
+<li class="level2"><a href="#version">version</a></li>
+<li class="level2"><a href="#versionmajor">versionMajor</a></li>
+<li class="level2"><a href="#versionminor">versionMinor</a></li>
+<li class="level2"><a href="#versionparts">versionParts</a></li>
+<li class="level2"><a href="#versionpatch">versionPatch</a></li>
+<li class="level2"><a href="#versionbuild">versionBuild</a></li>
+<li class="level2"><a href="#toolchaininstallpath">toolchainInstallPath</a></li>
+<li class="level2"><a href="#toolchaininstallroot">toolchainInstallRoot</a></li>
+<li class="level2"><a href="#compilername">compilerName</a></li>
+<li class="level2"><a href="#compilerpath">compilerPath</a></li>
+<li class="level2"><a href="#linkername">linkerName</a></li>
+<li class="level2"><a href="#linkerpath">linkerPath</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Module wix</h1>
+<span class="subtitle"></span>
+<!-- $$$wix-module.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>The <code>wix</code> module contains properties and rules for building MSI and EXE setup packages with the Windows Installer XML Toolset.</p>
+<p>This module is only available on Windows.</p>
+<a name="general-properties"></a>
+<h2 id="general-properties">General Properties</h2>
+<a name="debuginformation"></a>
+<h3 >debugInformation</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>qbs.debugInformation</code></td></tr>
+</table></div>
+<p>Generate debug information. See <code>qbs.debugInformation</code>.</p>
+<a name="defines"></a>
+<h3 >defines</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of preprocessor macros that get passed to the compiler. To set macro values use the following syntax:</p>
+<pre class="cpp">wix<span class="operator">.</span>defines: <span class="operator">[</span><span class="string">&quot;USE_COLORS=1&quot;</span><span class="operator">,</span> <span class="char">'COLOR_STR=&quot;blanched almond&quot;'</span><span class="operator">]</span></pre>
+<a name="enableqbsdefines"></a>
+<h3 >enableQbsDefines</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>true</code></td></tr>
+</table></div>
+<p>Whether to define preprocessor macros corresponding to values from the project and product objects. When building a 64-bit package, the preprocessor variable <code>Win64</code> will also be defined.</p>
+<a name="visualstudiocompatibility"></a>
+<h3 >visualStudioCompatibility</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>true</code></td></tr>
+</table></div>
+<p>Passes most of the same preprocessor macros to the compiler as Visual Studio does. This allows easier authoring WiX files that are compatible with both Qbs and MSBuild.</p>
+<a name="includepaths"></a>
+<h3 >includePaths</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>pathList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>List of include paths. Relative paths are considered to be relative to the .qbs product file they are used in.</p>
+<a name="treatwarningsaserrors"></a>
+<h3 >treatWarningsAsErrors</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>false</code></td></tr>
+</table></div>
+<p>Warnings will be handled as errors and cause the build to fail.</p>
+<a name="warninglevel"></a>
+<h3 >warningLevel</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Allowed Values:</b></td><td ><code>&quot;none&quot;</code>, <code>&quot;normal&quot;</code>, <code>&quot;pedantic&quot;</code></td></tr>
+<tr valign="top" class="odd"><td ><b>Default:</b></td><td ><code>&quot;normal&quot;</code></td></tr>
+</table></div>
+<p>Severity of warnings to emit. The higher the level, the more warnings will be shown.</p>
+<a name="verboseoutput"></a>
+<h3 >verboseOutput</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>bool</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>false</code></td></tr>
+</table></div>
+<p>Whether to display verbose output from the compiler and linker.</p>
+<a name="compilerflags"></a>
+<h3 >compilerFlags</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>Additional flags for the Candle compiler.</p>
+<a name="linkerflags"></a>
+<h3 >linkerFlags</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>Additional flags for the Light linker.</p>
+<a name="cultures"></a>
+<h3 >cultures</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >undefined</td></tr>
+</table></div>
+<p>List of localizations to include in the MSI. Use <code>undefined</code> to include all localizations.</p>
+<a name="extensions"></a>
+<h3 >extensions</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>stringList</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>[&quot;WixBalExtension&quot;]</code> if the product type is an EXE setup application, otherwise <code>undefined</code>.</td></tr>
+<tr valign="top" class="odd"><td ><b>Possible Values:</b></td><td ><code>&quot;WixBalExtension&quot;</code>, <code>&quot;WixComPlusExtension&quot;</code>, <code>&quot;WixDependencyExtension&quot;</code>, <code>&quot;WixDifxAppExtension&quot;</code>, <code>&quot;WixDirectXExtension&quot;</code>, <code>&quot;WixFirewallExtension&quot;</code>, <code>&quot;WixGamingExtension&quot;</code>, <code>&quot;WixIisExtension&quot;</code>, <code>&quot;WixMsmqExtension&quot;</code>, <code>&quot;WixNetFxExtension&quot;</code>, <code>&quot;WixPSExtension&quot;</code>, <code>&quot;WixSqlExtension&quot;</code>, <code>&quot;WixTagExtension&quot;</code>, <code>&quot;WixUIExtension&quot;</code>, <code>&quot;WixUtilExtension&quot;</code>, <code>&quot;WixVSExtension&quot;</code>, custom assemblies</td></tr>
+</table></div>
+<p>List of extension assemblies to link into the output.</p>
+<a name="version"></a>
+<h3 >version</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>undefined</code></td></tr>
+</table></div>
+<p>The WiX version. Consists of four numbers separated by dots, for instance &quot;3.7&#x2e;1224.0&quot;.</p>
+<a name="versionmajor"></a>
+<h3 >versionMajor</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>versionParts[0]</code></td></tr>
+</table></div>
+<p>The WiX major version.</p>
+<a name="versionminor"></a>
+<h3 >versionMinor</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>versionParts[1]</code></td></tr>
+</table></div>
+<p>The WiX minor version.</p>
+<a name="versionparts"></a>
+<h3 >versionParts</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>list</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>empty</code></td></tr>
+</table></div>
+<p>The WiX version as a list. For instance, WiX version 3.7&#x2e;1224.0 would correspond to a value of <code>[3, 7, 1224, 0]</code>.</p>
+<a name="versionpatch"></a>
+<h3 >versionPatch</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>versionParts[2]</code></td></tr>
+</table></div>
+<p>The WiX patch level.</p>
+<a name="versionbuild"></a>
+<h3 >versionBuild</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>int</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>versionParts[3]</code></td></tr>
+</table></div>
+<p>The fourth WiX version number component.</p>
+<a name="toolchaininstallpath"></a>
+<h3 >toolchainInstallPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>path</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >determined automatically</td></tr>
+</table></div>
+<p>WiX installation directory. Determined by searching the registry for the latest version. This should not normally need to be changed.</p>
+<a name="toolchaininstallroot"></a>
+<h3 >toolchainInstallRoot</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>path</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td >determined automatically</td></tr>
+</table></div>
+<p>WiX binaries directory. Determined by searching the registry for the latest version. This should not normally need to be changed.</p>
+<a name="compilername"></a>
+<h3 >compilerName</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>&quot;candle.exe&quot;</code></td></tr>
+</table></div>
+<p>Name of the compiler binary. This should not normally need to be changed.</p>
+<a name="compilerpath"></a>
+<h3 >compilerPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>compilerName</code></td></tr>
+</table></div>
+<p>Directory where the compiler binary is located. This should not normally need to be changed.</p>
+<a name="linkername"></a>
+<h3 >linkerName</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>&quot;light.exe&quot;</code></td></tr>
+</table></div>
+<p>Name of the linker binary. This should not normally need to be changed.</p>
+<a name="linkerpath"></a>
+<h3 >linkerPath</h3>
+<div class="table"><table class="generic">
+ <tr valign="top" class="odd"><td ><b>Type:</b></td><td ><code>string</code></td></tr>
+<tr valign="top" class="even"><td ><b>Default:</b></td><td ><code>linkerName</code></td></tr>
+</table></div>
+<p>Directory where the linker binary is located. This should not normally need to be changed.</p>
+</div>
+<!-- @@@wix-module.html -->
+<p class="naviNextPrevious footerNavi">
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2015 Digia Plc and/or its
+   subsidiaries. Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Digia, Qt and their respective logos are trademarks of Digia Plc     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+/****************************************************************************
+**
+** This file is part of Qt Creator
+**
+** Copyright (c) 2012 Nokia Corporation and/or its subsidiary(-ies).
+**
+** Contact: Nokia Corporation (qt-info@nokia.com)
+**
+**
+** GNU Free Documentation License
+**
+** Alternatively, this file may be used under the terms of the GNU Free
+** Documentation License version 1.3 as published by the Free Software
+** Foundation and appearing in the file included in the packaging of this
+** file.
+**
+** If you have questions regarding the use of this file, please contact
+** Nokia at qt-info@nokia.com.
+**
+****************************************************************************/
+
+// **********************************************************************
+// NOTE: the sections are not ordered by their logical order to avoid
+// reshuffling the file each time the index order changes (i.e., often).
+// Run the fixnavi.pl script to adjust the links to the index order.
+// **********************************************************************
+
+/*!
+    \contentspage index.html
+    \previouspage creator-build-example-application.html
+    \page creator-tutorials.html
+    \nextpage creator-qml-application.html
+
+    \title Tutorials
+
+    \image creator-gs-04.png
+
+    You can use \QC to create applications for several platforms by using
+    several technologies. The tutorials in this manual explain how to create
+    some basic applications.
+
+    \list
+
+        \o  \l{Creating a Qt Quick Application}
+
+            Learn about the basic Qt Quick concepts and QML elements.
+        \o  \l{Using Qt Quick Components}
+
+            Learn how to develop a Qt Quick application for mobile devices.
+
+        \o  \l{Creating a Qt Widget Based Application}
+
+            Learn how to create a Qt widget based application for the desktop.
+
+    \endlist
+
+*/

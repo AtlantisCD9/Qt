@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- transformer.qdoc -->
+  <title>Transformer Item | Qbs Manual </title>
+  <link rel="stylesheet" type="text/css" href="style/offline.css" />
+</head>
+<body>
+<div class="header" id="qtdocheader">
+    <div class="main">
+    <div class="main-rounded">
+        <div class="navigationbar">
+        <ul>
+<li><a href="index.html">Qbs Manual</a></li>
+<li>Transformer Item</li>
+<li id="buildversion">Qt Build Suite 1.4.1</li>
+    </ul>
+    </div>
+</div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="subproject-item.html" />
+  <link rel="next" href="xpcservice-item.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="subproject-item.html">SubProject Item</a>
+<a class="nextPage" href="xpcservice-item.html">XPCService Item</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#transformer-properties">Transformer Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Transformer Item</h1>
+<span class="subtitle"></span>
+<!-- $$$transformer-item.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>A <i>transformer</i> takes zero or more inputs and produces one or more output artifacts from them. The following transformer creates one output file from one input file:</p>
+<pre class="cpp">Transformer {
+    inputs: <span class="string">&quot;raw_input.txt&quot;</span>
+    Artifact {
+        filePath: <span class="string">&quot;processed_input.txt&quot;</span>
+        fileTags: <span class="string">&quot;processed_file&quot;</span>
+    }
+    prepare: {
+        var cmd <span class="operator">=</span> <span class="keyword">new</span> JavaScriptCommand();
+        cmd<span class="operator">.</span>description <span class="operator">=</span> <span class="string">&quot;Processing '&quot;</span> <span class="operator">+</span> input<span class="operator">.</span>filePath <span class="operator">+</span> <span class="string">&quot;'&quot;</span>;
+        cmd<span class="operator">.</span>highlight <span class="operator">=</span> <span class="string">&quot;codegen&quot;</span>;
+        cmd<span class="operator">.</span>sourceCode <span class="operator">=</span> function() {
+            var file <span class="operator">=</span> <span class="keyword">new</span> TextFile(input<span class="operator">.</span>filePath);
+            var content <span class="operator">=</span> file<span class="operator">.</span>readAll();
+            file<span class="operator">.</span>close()
+            content <span class="operator">=</span> content<span class="operator">.</span>replace(<span class="operator">/</span>\r\n<span class="operator">/</span>g<span class="operator">,</span> <span class="string">&quot;\n&quot;</span>);
+            file <span class="operator">=</span> <span class="keyword">new</span> TextFile(output<span class="operator">.</span>filePath<span class="operator">,</span> TextFile<span class="operator">.</span>WriteOnly);
+            file<span class="operator">.</span>truncate();
+            file<span class="operator">.</span>write(content);
+            file<span class="operator">.</span>close();
+        }
+        <span class="keyword">return</span> cmd;
+    }
+}</pre>
+<p>This example exhibits some interesting features of transformers:</p>
+<ul>
+<li>If there is only one input file, the property <code>input</code> is available as syntactic sugar for <code>inputs[0]</code>.</li>
+<li>The filenames of the output artifacts are available as <code>outputs</code>. If there is only one of these, it can be referred to it as <code>output</code>.</li>
+</ul>
+<p>A <code>Transformer</code> is always attached to a <code>Product</code>, possibly indirectly via a <code>Module</code>.</p>
+<a name="transformer-properties"></a>
+<h2 id="transformer-properties">Transformer Properties</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >inputs</td><td >stringList</td><td >empty list</td><td >The list of inputs to the transformer.</td></tr>
+<tr valign="top" class="even"><td >prepare</td><td >list of Javascript commands</td><td >empty list</td><td >The commands that the transformer runs. These typically read from the input files and write to the output files in some way.</td></tr>
+<tr valign="top" class="odd"><td >condition</td><td >bool</td><td >true</td><td >If true, the transformer is enabled, otherwise it does nothing.</td></tr>
+<tr valign="top" class="even"><td >explicitlyDependsOn</td><td >stringList</td><td ><code>undefined</code></td><td >A list of file tags. All output artifacts of this transformer will have a dependency to all artifacts with the given file tags.</td></tr>
+</table></div>
+</div>
+<!-- @@@transformer-item.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="subproject-item.html">SubProject Item</a>
+<a class="nextPage" href="xpcservice-item.html">XPCService Item</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2015 Digia Plc and/or its
+   subsidiaries. Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Digia, Qt and their respective logos are trademarks of Digia Plc     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>
